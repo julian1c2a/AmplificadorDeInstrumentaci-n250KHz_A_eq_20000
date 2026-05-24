@@ -1,0 +1,100 @@
+* Amplificador de Instrumentacion 250kHz, Ganancia 25000
+.options savecurrents
+.options method=gear reltol=1e-3
+
+* Fuentes de alimentacion
+VCC vcc 0 DC 15
+VEE vee 0 DC -15
+
+* Senal de entrada
+Vcm vcm 0 DC 0
+Vdiff vdiff_node 0 DC 0 AC 1 SIN(0 100u 10k)
+E_in_p vp vcm vdiff_node 0 0.5
+E_in_n vn vcm vdiff_node 0 -0.5
+
+* Macromodelo de Op-Amp de alta velocidad (GBWP 100MHz, Avol 100k)
+.subckt OPAMP vp vn out vcc vee
+Rin vp vn 1Meg
+G1 0 int vp vn 1m
+R1 int 0 100Meg
+C1 int 0 1.59p
+B1 out_pre 0 V=V(int) > V(vcc)-1.5 ? V(vcc)-1.5 : ( V(int) < V(vee)+1.5 ? V(vee)+1.5 : V(int) )
+Rout out_pre out 50
+.ends
+
+* --- ETAPA 1: Entrada Diferencial (Ganancia = 50) ---
+XU1 vp vn1 vout1 vcc vee OPAMP
+XU2 vn vn2 vout2 vcc vee OPAMP
+Rg vn1 vn2 100
+R1 vout1 vn1 2450
+R2 vout2 vn2 2450
+
+* --- ETAPA 2: Diferencial a Single-Ended (Ganancia = 20) ---
+XU3 vp3 vn3 vout3 vcc vee OPAMP
+R3 vout1 vp3 1k
+R4 vp3 0 20k
+R5 vout2 vn3 1k
+R6 vout3 vn3 20k
+
+* --- ETAPA 3: Ganancia Adicional (Ganancia = 25) ---
+XU4 vout3 vn4 vout4 vcc vee OPAMP
+R9 vn4 0 1k
+R10 vout4 vn4 24k
+
+* --- FILTRO PASA BAJOS (fc = 250kHz) ---
+* R = 636.6 ohm, C = 1 nF
+Rf vout4 vfilt 636.6
+Cf vfilt 0 1n
+
+* --- ETAPA DE SALIDA: Buffer con Push-Pull ---
+* El op-amp lee la salida del push-pull para asegurar precision.
+XU5 vfilt vn5 vout_op5 vcc vee OPAMP
+
+* Red de polarizacion y transistores (Clase AB)
+Rb1 vcc nb1 1k
+D1 nb1 vout_op5 1N4148
+D2 vout_op5 nb2 1N4148
+Rb2 nb2 vee 1k
+
+Q1 vcc nb1 vout_final TIP31
+Q2 vee nb2 vout_final TIP32
+
+* Realimentacion al opamp (baja impedancia)
+Rf_out vout_final vn5 1
+
+* Carga para probar alta corriente (10 ohmios)
+RL vout_final 0 10
+
+* Modelos de transistores y diodos
+.model TIP31 NPN(IS=3.12E-14 BF=82 VAF=100 IKF=1.5 ISE=3.57E-13 NE=1.5 BR=4.2 VAR=100 IKR=0.3 ISC=3.12E-14 NC=2 RE=0.08 RC=0.04 CJE=1.63E-9 VJE=0.6 MJE=0.33 CJC=3.1E-10 VJC=0.55 MJC=0.33 TF=2.88E-8 TR=1E-7)
+.model TIP32 PNP(IS=3.12E-14 BF=82 VAF=100 IKF=1.5 ISE=3.57E-13 NE=1.5 BR=4.2 VAR=100 IKR=0.3 ISC=3.12E-14 NC=2 RE=0.08 RC=0.04 CJE=1.63E-9 VJE=0.6 MJE=0.33 CJC=3.1E-10 VJC=0.55 MJC=0.33 TF=2.88E-8 TR=1E-7)
+.model 1N4148 D(IS=2.682n N=1.836 RS=0.5664 CJO=4p M=0.333 VJ=0.5 TT=11.54n)
+
+* Analisis
+.control
+  * 1. Analisis AC
+  ac dec 50 10 10Meg
+  let gain_db = vdb(vout_final)
+  meas ac gain_max MAX gain_db
+  let target_gain = gain_max - 3
+  meas ac f_3db WHEN gain_db = target_gain FALL=1
+  echo "=== RESULTADOS AC ==="
+  print gain_max f_3db
+  wrdata ac_response.txt gain_db
+  
+  * 2. Analisis DC
+  dc Vdiff -0.4m 0.4m 5u
+  echo "=== RESULTADOS DC ==="
+  meas dc out_pos FIND v(vout_final) AT=0.2m
+  meas dc out_neg FIND v(vout_final) AT=-0.2m
+  print out_pos out_neg
+  wrdata dc_response.txt v(vout_final)
+  
+  * 3. Analisis Transient
+  tran 100n 500u
+  echo "=== RESULTADOS TRANSIENT ==="
+  meas tran vout_pp PP v(vout_final)
+  print vout_pp
+  wrdata tran_response.txt v(vout_final)
+.endc
+.end

@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "version": 1
+  },
+  "project": {
+    "back_annotated_footprints": [],
+    "board": {
+      "design_rules": {
+        "rule_severity": {
+          "allow_microvia": "error",
+          "blind_buried_via": "error",
+          "difference_pair_gap_out_of_range": "error",
+          "dupe_pad": "error",
+          "edge_clearance": "error",
+          "hole_near_hole": "error",
+          "hole_to_dev": "error",
+          "microvia_drill_out_of_range": "error",
+          "min_annular_ring": "error",
+          "min_via_diameter": "error",
+          "parity_class_diff_pair_gap": "error",
+          "relative_gap": "error",
+          "relative_width": "error",
+          "silk_clearance": "error",
+          "silk_over_copper": "warning",
+          "silk_over_mask": "warning",
+          "through_hole_drill_out_of_range": "error",
+          "track_width": "error",
+          "via_drill_out_of_range": "error",
+          "via_to_dev": "error",
+          "via_to_track": "error"
+        }
+      }
+    },
+    "sheets": [
+      [
+        "00000000-0000-0000-0000-000000000000",
+        ""
+      ]
+    ]
+  }
+}

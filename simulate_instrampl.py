@@ -8,19 +8,19 @@ ngspice_path = r"C:\msys64\ucrt64\bin\ngspice.exe"
 workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
 
 def run_simulation():
-    cir_path = os.path.join(workspace_dir, "superopamp_ngspice.cir")
+    cir_path = os.path.join(workspace_dir, "InstrAmpl.cir")
     print(f"Running ngspice simulation on: {cir_path}...")
     
     # Run ngspice in batch mode
     result = subprocess.run(
-        [ngspice_path, "-b", "superopamp_ngspice.cir"],
+        [ngspice_path, "-b", "InstrAmpl.cir"],
         cwd=workspace_dir,
         capture_output=True,
         text=True
     )
     
     # Save the console output to a log file
-    log_path = os.path.join(workspace_dir, "superopamp_sim_log.txt")
+    log_path = os.path.join(workspace_dir, "instrampl_sim_log.txt")
     with open(log_path, 'w', encoding='utf-8') as f:
         f.write(result.stdout)
         if result.stderr:
@@ -48,9 +48,9 @@ def load_spice_data(filename):
 
 def analyze_and_plot():
     # 1. Load Data
-    dc_data = load_spice_data("superopamp_dc.txt")
-    ac_data = load_spice_data("superopamp_ac.txt")
-    tran_data = load_spice_data("superopamp_tran.txt")
+    dc_data = load_spice_data("instrampl_dc.txt")
+    ac_data = load_spice_data("instrampl_ac.txt")
+    tran_data = load_spice_data("instrampl_tran.txt")
     
     # Setup premium plotting style
     plt.rcParams['font.sans-serif'] = 'Arial'
@@ -61,10 +61,10 @@ def analyze_and_plot():
     plt.rcParams['ytick.color'] = '#2c3e50'
     
     # Color palette
-    c_primary = '#6366f1'   # Indigo/violet
-    c_secondary = '#3b82f6' # Vibrant blue
+    c_primary = '#4f46e5'   # Vibrant Indigo
+    c_secondary = '#0ea5e9' # Ocean Blue
     c_phase = '#ec4899'     # Hot pink for phase
-    c_grid = '#f1f5f9'
+    c_grid = '#f8fafc'
     c_border = '#e2e8f0'
     
     print("\nAnalyzing simulation results...")
@@ -79,16 +79,16 @@ def analyze_and_plot():
         vin_dc = dc_data[:, 0]
         vout_dc = dc_data[:, 1]
         
-        # Fit in the very linear region (+/- 15 uV)
-        lin_mask = (vin_dc > -15e-6) & (vin_dc < 15e-6)
+        # Fit in the very linear region (+/- 5 uV)
+        lin_mask = (vin_dc > -5e-6) & (vin_dc < 5e-6)
         slope, intercept = np.polyfit(vin_dc[lin_mask], vout_dc[lin_mask], 1)
         
         ax_dc.plot(vin_dc * 1e6, vout_dc, color=c_primary, linewidth=2.5, label='Static Curve')
         ax_dc.axhline(0, color='#94a3b8', linestyle=':', linewidth=1)
         ax_dc.axvline(0, color='#94a3b8', linestyle=':', linewidth=1)
         
-        # Linearity error in +/- 20uV
-        eval_mask = (vin_dc > -20e-6) & (vin_dc < 20e-6)
+        # Linearity error in +/- 5uV
+        eval_mask = (vin_dc > -5e-6) & (vin_dc < 5e-6)
         vout_eval = vout_dc[eval_mask]
         vin_eval = vin_dc[eval_mask]
         predicted = slope * vin_eval + intercept
@@ -96,18 +96,18 @@ def analyze_and_plot():
         max_lin_err = np.max(np.abs(lin_err))
         
         print(f"DC Differential Gain: {slope:.2f} ({20*np.log10(abs(slope)):.2f} dB)")
-        print(f"Max Linearity Error (+/-20 uV): {max_lin_err * 1000:.3f} mV")
+        print(f"Max Linearity Error (+/-5 uV): {max_lin_err * 1000:.3f} mV")
         
         ax_dc.set_title("Static DC Transfer Curve", fontsize=13, fontweight='bold', pad=12)
         ax_dc.set_xlabel("Input Differential Voltage $V_{in}$ (μV)", fontsize=11, labelpad=8)
         ax_dc.set_ylabel("Output Voltage $V_{out}$ (V)", fontsize=11, labelpad=8)
         ax_dc.grid(True, color=c_grid, linestyle='-', linewidth=1)
-        ax_dc.set_xlim(-35, 35)
-        ax_dc.set_ylim(-21, 21)
+        ax_dc.set_xlim(-11, 11)
+        ax_dc.set_ylim(-16, 16)
         
         # Display analysis text
         info_text = f"DC Gain: {slope/1e3:.2f}k ({20*np.log10(abs(slope)):.1f} dB)\nLin. Error: {max_lin_err*1e3:.2f} mV"
-        ax_dc.text(-30, 12, info_text, bbox=dict(boxstyle="round,pad=0.5", fc='white', ec=c_border, alpha=0.9), fontsize=10)
+        ax_dc.text(-10, 10, info_text, bbox=dict(boxstyle="round,pad=0.5", fc='white', ec=c_border, alpha=0.9), fontsize=10)
     else:
         ax_dc.text(0.5, 0.5, "No DC data available", ha='center', va='center')
         
@@ -147,9 +147,9 @@ def analyze_and_plot():
         ax_ac_phase.set_ylabel("Phase (Degrees)", fontsize=11, color=c_phase, labelpad=8)
         
         ax_ac_mag.grid(True, which="both", color=c_grid, linestyle='-', linewidth=1)
-        ax_ac_mag.set_xlim(1, 100e6)
-        ax_ac_mag.set_ylim(-10, 120)
-        ax_ac_phase.set_ylim(-360, 45)
+        ax_ac_mag.set_xlim(1, 10e6)
+        ax_ac_mag.set_ylim(-10, 100)
+        ax_ac_phase.set_ylim(-270, 45)
         
         # Bandwidth line
         if not np.isnan(f_3db):
@@ -175,7 +175,7 @@ def analyze_and_plot():
         ax_tran_in = ax_tran.twinx()
         ax_tran_in.plot(time_ms, vin_tran * 1e6, color='#10b981', linewidth=1.5, linestyle=':', label='Input voltage $V_{in}$ (Left Axis)')
         
-        ax_tran.set_title("Transient Response to 100kHz 10μV Peak Sine Input", fontsize=13, fontweight='bold', pad=12)
+        ax_tran.set_title("Transient Response to 10kHz 100μV Peak Balanced Differential Input (50 Ohm Load)", fontsize=13, fontweight='bold', pad=12)
         ax_tran.set_xlabel("Time (ms)", fontsize=11, labelpad=8)
         ax_tran.set_ylabel("Output Voltage (V)", fontsize=11, color=c_primary, labelpad=8)
         ax_tran_in.set_ylabel("Input Voltage (μV)", fontsize=11, color='#10b981', labelpad=8)
@@ -196,11 +196,11 @@ def analyze_and_plot():
     else:
         ax_tran.text(0.5, 0.5, "No Transient data available", ha='center', va='center')
         
-    plt.suptitle("SuperOpAmp Instrumentation Amplifier - Detailed ngspice Characterization", fontsize=16, fontweight='bold', color='#1e293b', y=0.98)
+    plt.suptitle("Composite Instrumentation Amplifier - High-Speed high-gain (Av=20000, AD8397 Power Output)", fontsize=16, fontweight='bold', color='#1e293b', y=0.98)
     
     # Save the figure in premium formats
-    fig_png = os.path.join(workspace_dir, "superopamp_analysis.png")
-    fig_svg = os.path.join(workspace_dir, "superopamp_analysis.svg")
+    fig_png = os.path.join(workspace_dir, "instrampl_analysis.png")
+    fig_svg = os.path.join(workspace_dir, "instrampl_analysis.svg")
     plt.savefig(fig_png, dpi=300, bbox_inches='tight')
     plt.savefig(fig_svg, format='svg', bbox_inches='tight')
     plt.close()

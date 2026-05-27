@@ -283,7 +283,7 @@ RL           vout_final 0 10K
 .control
   * 1. DC operating point and sweep linearity (+/- 10uV differential input spans full range!)
   dc Vdiff_node -10u 10u 0.1u
-  wrdata instrampl_dc.txt v(vout_final)
+  wrdata results/data/txt/instrampl_dc.txt v(vout_final)
   
   * 2. AC Frequency Response (Bode)
   * Target bandwidth is >500kHz
@@ -291,12 +291,12 @@ RL           vout_final 0 10K
   let gain_db = vdb(vout_final)
   let phase_rad = ph(v(vout_final))
   let phase_deg = phase_rad * 180 / 3.141592653589793
-  wrdata instrampl_ac.txt gain_db phase_deg
+  wrdata results/data/txt/instrampl_ac.txt gain_db phase_deg
   
   * 3. Transient Response Analysis
   * 10kHz sine wave, 3 cycles = 300us. Step size 100ns.
   * tran 100n 300u
-  * wrdata instrampl_tran.txt v(vp,vn) v(vout_final)
+  * wrdata results/data/txt/instrampl_tran.txt v(vp,vn) v(vout_final)
   
   echo "=== SIMULATION COMPLETED SUCCESSFULLY ==="
 .endc

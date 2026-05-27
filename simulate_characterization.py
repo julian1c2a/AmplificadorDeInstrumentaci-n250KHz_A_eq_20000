@@ -8,6 +8,18 @@ import matplotlib.pyplot as plt
 workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
 ngspice_path = r"C:\msys64\ucrt64\bin\ngspice.exe"
 
+# Define the results directories
+results_dir = os.path.join(workspace_dir, "results")
+txt_dir = os.path.join(results_dir, "data", "txt")
+csv_dir = os.path.join(results_dir, "data", "csv")
+png_dir = os.path.join(results_dir, "img", "png")
+svg_dir = os.path.join(results_dir, "img", "svg")
+
+os.makedirs(txt_dir, exist_ok=True)
+os.makedirs(csv_dir, exist_ok=True)
+os.makedirs(png_dir, exist_ok=True)
+os.makedirs(svg_dir, exist_ok=True)
+
 # Define the common header (ADA4817, AD8397, SuperOpAmp, SuperOpAmpWithPowOut)
 header_models = """* HIGH-SPEED PRECISION INSTRUMENTATION AMPLIFIER (ngspice format)
 * ----------------------------------------------------------------------
@@ -250,7 +262,7 @@ XOUT         out_pre out out vcc vee AD8397
 """
 
 def load_spice_data(filename):
-    path = os.path.join(workspace_dir, filename)
+    path = os.path.join(txt_dir, filename)
     data = []
     if not os.path.exists(path):
         return np.array([])
@@ -311,14 +323,13 @@ RL           vout_final 0 10K
 .control
   * DC sweep from -2mV to +2mV (covers negative sat, positive sat, and linear region)
   dc Vdiff_node -2m 2m 5u
-  wrdata instrampl_dc_char.txt v(vout_final)
+  wrdata results/data/txt/instrampl_dc_char.txt v(vout_final)
   
   * AC sweep up to 500MHz to find cutoff frequency
-  ac dec 100 1 500meg
   let gain_db = vdb(vout_final)
   let phase_rad = ph(v(vout_final))
   let phase_deg = phase_rad * 180 / 3.141592653589793
-  wrdata instrampl_ac_char.txt gain_db phase_deg
+  wrdata results/data/txt/instrampl_ac_char.txt gain_db phase_deg
 .endc
 .END
 """
@@ -356,7 +367,7 @@ RL           vout_final 0 10K
 .control
   ac dec 100 1 500meg
   let gain_db = vdb(vout_final)
-  wrdata instrampl_ac_cm_char.txt gain_db
+  wrdata results/data/txt/instrampl_ac_cm_char.txt gain_db
 .endc
 .END
 """
@@ -396,7 +407,7 @@ Itest        vout_final 0 DC 0 AC 1
   ac dec 100 1 100meg
   * Output voltage directly corresponds to Zout (Z = V / 1A)
   let zout_mag = vm(vout_final)
-  wrdata instrampl_ac_zout_char.txt zout_mag
+  wrdata results/data/txt/instrampl_ac_zout_char.txt zout_mag
 .endc
 .END
 """
@@ -467,7 +478,7 @@ RL           vout_final 0 10K
 
 .control
   tran {t_step:.6e} {t_stop:.6e}
-  wrdata instrampl_tran_{key}.txt v(vp,vn) v(vout_final)
+  wrdata results/data/txt/instrampl_tran_{key}.txt v(vp,vn) v(vout_final)
 .endc
 .END
 """
@@ -572,8 +583,10 @@ ax_pos_elbow.grid(True, color=c_grid)
 ax_pos_elbow.set_xlim(0.8, 1.2)
 
 plt.suptitle("Instrumentation Amplifier - DC Linearity & Saturation Elbow Analysis", fontsize=16, fontweight='bold', y=0.98)
-fig_dc_png = os.path.join(workspace_dir, "instrampl_dc_characterization.png")
+fig_dc_png = os.path.join(png_dir, "instrampl_dc_characterization.png")
+fig_dc_svg = os.path.join(svg_dir, "instrampl_dc_characterization.svg")
 plt.savefig(fig_dc_png, dpi=300, bbox_inches='tight')
+plt.savefig(fig_dc_svg, format='svg', bbox_inches='tight')
 plt.close()
 
 # --- PLOT 2: AC BODE PLOT ---
@@ -602,8 +615,10 @@ lines = [line1, line2]
 labels = [l.get_label() for l in lines]
 ax_mag.legend(lines, labels, loc='lower left', frameon=True, edgecolor=c_border)
 
-fig_ac_png = os.path.join(workspace_dir, "instrampl_ac_characterization.png")
+fig_ac_png = os.path.join(png_dir, "instrampl_ac_characterization.png")
+fig_ac_svg = os.path.join(svg_dir, "instrampl_ac_characterization.svg")
 plt.savefig(fig_ac_png, dpi=300, bbox_inches='tight')
+plt.savefig(fig_ac_svg, format='svg', bbox_inches='tight')
 plt.close()
 
 # --- PLOT 3: CMRR PLOT ---
@@ -633,8 +648,10 @@ ax_cmrr.text(freq[idx_dc]*2, cmrr[idx_dc]-5, f"CMRR (Low Freq) = {cmrr[idx_dc]:.
 ax_cmrr.plot(freq[idx_500k], cmrr[idx_500k], 'o', color=c_primary, markersize=8)
 ax_cmrr.text(freq[idx_500k]*0.05, cmrr[idx_500k]+5, f"CMRR (500 kHz) = {cmrr[idx_500k]:.1f} dB", color=c_dark, fontsize=9, fontweight='bold')
 
-fig_cmrr_png = os.path.join(workspace_dir, "instrampl_cmrr_characterization.png")
+fig_cmrr_png = os.path.join(png_dir, "instrampl_cmrr_characterization.png")
+fig_cmrr_svg = os.path.join(svg_dir, "instrampl_cmrr_characterization.svg")
 plt.savefig(fig_cmrr_png, dpi=300, bbox_inches='tight')
+plt.savefig(fig_cmrr_svg, format='svg', bbox_inches='tight')
 plt.close()
 
 # --- PLOT 4: OUTPUT IMPEDANCE PLOT ---
@@ -656,8 +673,10 @@ ax_zout.grid(True, which="both", color=c_grid, linestyle='-', linewidth=1)
 ax_zout.set_xlim(10, 100e6)
 ax_zout.set_ylim(1e-3, 100)
 
-fig_zout_png = os.path.join(workspace_dir, "instrampl_zout_characterization.png")
+fig_zout_png = os.path.join(png_dir, "instrampl_zout_characterization.png")
+fig_zout_svg = os.path.join(svg_dir, "instrampl_zout_characterization.svg")
 plt.savefig(fig_zout_png, dpi=300, bbox_inches='tight')
+plt.savefig(fig_zout_svg, format='svg', bbox_inches='tight')
 plt.close()
 
 # --- PLOT 5: TRANSIENT GRID (0.25fc, 0.5fc, fc, 2fc, 10fc, 50fc) ---
@@ -729,28 +748,59 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
         if i == 0:
             ax.legend(lines_a, labels_a, loc='upper right', frameon=True, facecolor='white', edgecolor=c_border, fontsize=8)
             
-        # Clean up files
-        tran_file_path = os.path.join(workspace_dir, f"instrampl_tran_{key}.txt")
-        if os.path.exists(tran_file_path):
-            os.remove(tran_file_path)
+        # Save to CSV
+        tran_df = pd.DataFrame({
+            'Time_s': time_sec[extract_mask],
+            'Time_ns': t_extracted,
+            'Vin_V': vin_extracted,
+            'Vout_V': vout_extracted,
+            'Vout_AC_V': vout_ac
+        })
+        tran_csv_path = os.path.join(csv_dir, f"instrampl_tran_{key}.csv")
+        tran_df.to_csv(tran_csv_path, index=False)
             
     else:
         ax.text(0.5, 0.5, "Simulation failed", ha='center', va='center')
 
 plt.suptitle("Instrumentation Amplifier - Transient Response at Multiple Frequencies (Last 4 Cycles of 8)", fontsize=16, fontweight='bold', y=0.99)
-fig_tran_png = os.path.join(workspace_dir, "instrampl_transient_characterization.png")
+fig_tran_png = os.path.join(png_dir, "instrampl_transient_characterization.png")
+fig_tran_svg = os.path.join(svg_dir, "instrampl_transient_characterization.svg")
 plt.savefig(fig_tran_png, dpi=300, bbox_inches='tight')
+plt.savefig(fig_tran_svg, format='svg', bbox_inches='tight')
 plt.close()
 
-# Cleanup AC / DC temporary txt files
-for filename in ["instrampl_ac_char.txt", "instrampl_dc_char.txt", "instrampl_ac_cm_char.txt", "instrampl_ac_zout_char.txt"]:
-    path = os.path.join(workspace_dir, filename)
-    if os.path.exists(path):
-        os.remove(path)
+# Save non-transient datasets to CSV
+dc_df = pd.DataFrame({
+    'Vin_V': vin_dc,
+    'Vout_V': vout_dc,
+    'Local_Gain': local_gain
+})
+dc_df.to_csv(os.path.join(csv_dir, "instrampl_dc_char.csv"), index=False)
+
+ac_df = pd.DataFrame({
+    'Frequency_Hz': freq,
+    'Gain_dB': gain_db,
+    'Phase_deg': phase_deg
+})
+ac_df.to_csv(os.path.join(csv_dir, "instrampl_ac_char.csv"), index=False)
+
+cmrr_df = pd.DataFrame({
+    'Frequency_Hz': freq,
+    'Gain_Diff_dB': gain_db,
+    'Gain_CM_dB': gain_cm_db,
+    'CMRR_dB': cmrr
+})
+cmrr_df.to_csv(os.path.join(csv_dir, "instrampl_cmrr_char.csv"), index=False)
+
+zout_df = pd.DataFrame({
+    'Frequency_Hz': freq_zout,
+    'Zout_Ohm': zout_mag
+})
+zout_df.to_csv(os.path.join(csv_dir, "instrampl_zout_char.csv"), index=False)
 
 print("\nAll simulations completed, analyzed and plotted successfully!")
-print(f"- DC Curve plot: {fig_dc_png}")
-print(f"- AC Bode plot: {fig_ac_png}")
-print(f"- CMRR plot: {fig_cmrr_png}")
-print(f"- Output Impedance plot: {fig_zout_png}")
-print(f"- Transient Grid plot: {fig_tran_png}")
+print(f"- DC Curve plots: {fig_dc_png} / {fig_dc_svg}")
+print(f"- AC Bode plots: {fig_ac_png} / {fig_ac_svg}")
+print(f"- CMRR plots: {fig_cmrr_png} / {fig_cmrr_svg}")
+print(f"- Output Impedance plots: {fig_zout_png} / {fig_zout_svg}")
+print(f"- Transient Grid plots: {fig_tran_png} / {fig_tran_svg}")

@@ -5,7 +5,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 ngspice_path = r"C:\msys64\ucrt64\bin\ngspice.exe"
-workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentacion250KHz_A_eq_20000"
+workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
+
+# Define the results directories
+results_dir = os.path.join(workspace_dir, "results")
+txt_dir = os.path.join(results_dir, "data", "txt")
+csv_dir = os.path.join(results_dir, "data", "csv")
+png_dir = os.path.join(results_dir, "img", "png")
+svg_dir = os.path.join(results_dir, "img", "svg")
+
+os.makedirs(txt_dir, exist_ok=True)
+os.makedirs(csv_dir, exist_ok=True)
+os.makedirs(png_dir, exist_ok=True)
+os.makedirs(svg_dir, exist_ok=True)
 
 def run_simulation():
     cir_path = os.path.join(workspace_dir, "InstrAmpl.cir")
@@ -20,7 +32,7 @@ def run_simulation():
     )
     
     # Save the console output to a log file
-    log_path = os.path.join(workspace_dir, "instrampl_sim_log.txt")
+    log_path = os.path.join(txt_dir, "instrampl_sim_log.txt")
     with open(log_path, 'w', encoding='utf-8') as f:
         f.write(result.stdout)
         if result.stderr:
@@ -31,7 +43,7 @@ def run_simulation():
     return result.returncode == 0
 
 def load_spice_data(filename):
-    path = os.path.join(workspace_dir, filename)
+    path = os.path.join(txt_dir, filename)
     data = []
     if not os.path.exists(path):
         print(f"Warning: File {filename} not found.")
@@ -108,6 +120,12 @@ def analyze_and_plot():
         # Display analysis text
         info_text = f"DC Gain: {slope/1e3:.2f}k ({20*np.log10(abs(slope)):.1f} dB)\nLin. Error: {max_lin_err*1e3:.2f} mV"
         ax_dc.text(-10, 10, info_text, bbox=dict(boxstyle="round,pad=0.5", fc='white', ec=c_border, alpha=0.9), fontsize=10)
+        # Save DC to CSV
+        dc_df = pd.DataFrame({
+            'Vin_V': vin_dc,
+            'Vout_V': vout_dc
+        })
+        dc_df.to_csv(os.path.join(csv_dir, "instrampl_dc.csv"), index=False)
     else:
         ax_dc.text(0.5, 0.5, "No DC data available", ha='center', va='center')
         
@@ -159,6 +177,13 @@ def analyze_and_plot():
         lines = [line1, line2]
         labels = [l.get_label() for l in lines]
         ax_ac_mag.legend(lines, labels, loc='lower left', frameon=True, facecolor='white', edgecolor=c_border)
+        # Save AC to CSV
+        ac_df = pd.DataFrame({
+            'Frequency_Hz': freq,
+            'Gain_dB': gain_db,
+            'Phase_deg': phase_deg
+        })
+        ac_df.to_csv(os.path.join(csv_dir, "instrampl_ac.csv"), index=False)
     else:
         ax_ac_mag.text(0.5, 0.5, "No AC data available", ha='center', va='center')
         
@@ -193,14 +218,21 @@ def analyze_and_plot():
         lines_t = [ax_tran.get_lines()[0], ax_tran_in.get_lines()[0]]
         labels_t = [l.get_label() for l in lines_t]
         ax_tran.legend(lines_t, labels_t, loc='upper right', frameon=True, facecolor='white', edgecolor=c_border)
+        # Save Transient to CSV
+        tran_df = pd.DataFrame({
+            'Time_s': tran_data[:, 0],
+            'Vin_V': vin_tran,
+            'Vout_V': vout_tran
+        })
+        tran_df.to_csv(os.path.join(csv_dir, "instrampl_tran.csv"), index=False)
     else:
         ax_tran.text(0.5, 0.5, "No Transient data available", ha='center', va='center')
         
     plt.suptitle("Composite Instrumentation Amplifier - High-Speed high-gain (Av=20000, AD8397 Power Output)", fontsize=16, fontweight='bold', color='#1e293b', y=0.98)
     
     # Save the figure in premium formats
-    fig_png = os.path.join(workspace_dir, "instrampl_analysis.png")
-    fig_svg = os.path.join(workspace_dir, "instrampl_analysis.svg")
+    fig_png = os.path.join(png_dir, "instrampl_analysis.png")
+    fig_svg = os.path.join(svg_dir, "instrampl_analysis.svg")
     plt.savefig(fig_png, dpi=300, bbox_inches='tight')
     plt.savefig(fig_svg, format='svg', bbox_inches='tight')
     plt.close()

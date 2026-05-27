@@ -661,7 +661,7 @@ plt.savefig(fig_zout_png, dpi=300, bbox_inches='tight')
 plt.close()
 
 # --- PLOT 5: TRANSIENT GRID (0.25fc, 0.5fc, fc, 2fc, 10fc, 50fc) ---
-fig_tran, axes = plt.subplots(3, 2, figsize=(15, 15), dpi=150, hspace=0.35, wspace=0.25)
+fig_tran, axes = plt.subplots(3, 2, figsize=(15, 15), dpi=150, gridspec_kw={'hspace': 0.35, 'wspace': 0.25})
 axes = axes.flatten()
 
 print(f"\nTransient Response at Multiple Frequencies:")

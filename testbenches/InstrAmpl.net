@@ -1,0 +1,2665 @@
+(export 
+  (version "D")
+  (design
+    (source "generate_kicad_schema.py")
+    (date "05/27/2026 06:05 PM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "generate_kicad_schema.py")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "RL")
+      (value "50")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "RYAe4ZSWxC")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:160"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "ddf83ce2-d126-57c3-a39d-3b3c5740284a"))
+    (comp
+      (ref "Rf1")
+      (value "49.75K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "V9PDiHL8dq")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:142"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "4acc8142-40e6-5edf-9fad-eb2fb8ba79dd"))
+    (comp
+      (ref "Rf2")
+      (value "49.75K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "hedn4Urgyp")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:143"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "079c5582-147a-50db-8778-bff257a5c4c2"))
+    (comp
+      (ref "Rfb")
+      (value "75K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "IWyqUgaeKg")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:150"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "abb0083b-f828-5bdc-be8c-6928ece5d8f0"))
+    (comp
+      (ref "Rg")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "I4dqRC3VsX")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:139"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "7f435d97-a06a-592f-b509-864763a633b4"))
+    (comp
+      (ref "Rin1")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "2Klo59yvk0")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:147"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "c086a4c2-b14b-5533-ad9e-e0bcd64e3bff"))
+    (comp
+      (ref "Rin2")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "cvklNkN30H")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:149"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "38ef22a7-ffb8-565f-8812-4b088946fea8"))
+    (comp
+      (ref "Rref")
+      (value "75K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "MYlhDig7F5")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:148"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "600669f7-d8bc-50eb-ae9a-d8d96c6321fd"))
+    (comp
+      (ref "U10")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "GsV0OlyEl0")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "647bd43c-1500-5d13-afc7-f0515f68b15a"))
+    (comp
+      (ref "U11")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "fNbhhA87I8")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "9e3195db-2cb6-54c9-beaa-3cffe5ef4b14"))
+    (comp
+      (ref "U12")
+      (value "15K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "hLV33yJmuv")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "0e8005ad-218c-5376-9a54-8f2150e5be5b"))
+    (comp
+      (ref "U13")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "QXGmfzHRak")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "421603f5-376e-56f7-a5ad-eba31d95f363"))
+    (comp
+      (ref "U14")
+      (value "15K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "2WD6rgRX7m")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "ef6f1548-1ccb-5fb0-9cb2-1d57703e453c"))
+    (comp
+      (ref "U15")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "xYe19CQUDV")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "0d51a7c2-824c-5367-80fd-91bd5fcacc00"))
+    (comp
+      (ref "U16")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "z0tf5Nkh5T")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "4b2268fc-e5fe-598b-a13f-02d510a1c988"))
+    (comp
+      (ref "U17")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "dhhu15awzu")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "d84fdbb3-93a8-580e-b8f7-a9fb0dd68f9d"))
+    (comp
+      (ref "U18")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "i2xNXc7Dio")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "e1084b66-3071-5450-a047-b0f17f97ef74"))
+    (comp
+      (ref "U19")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "fL2eSdPVO2")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "af6d4bc9-cc13-50ee-8e98-732bb3dba61d"))
+    (comp
+      (ref "U1_XOP1")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "REwOQyBYLj")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:25"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "20a93fee-1388-579c-897d-15422ab29cdc"))
+    (comp
+      (ref "U1_XOP2")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "HXAkdXJptv")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:26"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "e1b4c956-9adf-5132-8b6d-fef666542150"))
+    (comp
+      (ref "U1_XOP3")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "C1abw466H3")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:27"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "cf8a11ab-2368-5641-a721-394ea6f9a4f3"))
+    (comp
+      (ref "U1_XOP4")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "siNWrrCoVn")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:28"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "b97a0d24-89f4-5883-9f46-65b63a966e62"))
+    (comp
+      (ref "U1_XOP5")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "CV7UjRTkmy")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:29"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "1c8f8430-2237-54a2-a5cf-f350b58ea87b"))
+    (comp
+      (ref "U20")
+      (value "160nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "cZrquTwBDf")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "74a981a2-bac5-51bd-9094-2f8ff6fb33e1"))
+    (comp
+      (ref "U21")
+      (value "160nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "8akyBrDtC3")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "4e871ced-8a3e-59e0-855d-89968c8254ab"))
+    (comp
+      (ref "U27")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "AfvejsV3al")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "b91a3814-0c87-55fc-a6c1-805ecea68163"))
+    (comp
+      (ref "U28")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "8MrZMPXjSt")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "68f4aba7-ab83-5e3e-9b99-cbdfb2e7cec3"))
+    (comp
+      (ref "U29")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "Ch0uk8KcIp")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "8539afd6-ccb6-596a-b022-fba931e6be8c"))
+    (comp
+      (ref "U2_XOP1")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "zvjzHt60gh")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:25"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "77b7f71c-dff2-5f48-808e-41e598221cd8"))
+    (comp
+      (ref "U2_XOP2")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "czkztA1z4K")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:26"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "0f0b9791-6af8-57ea-98c8-1199148dd02d"))
+    (comp
+      (ref "U2_XOP3")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "r78nIiExHV")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:27"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "32a8ce8b-8ffa-561a-9ed4-748b4b38ad19"))
+    (comp
+      (ref "U2_XOP4")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "YqH7htu3AL")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:28"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "da2ed0db-785d-596e-8164-243908f96861"))
+    (comp
+      (ref "U2_XOP5")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "ZyLMrRNVYw")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:29"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "4f34d277-ca49-53eb-a9a7-32efcc5bad0e"))
+    (comp
+      (ref "U30")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "hrC9EAAPCE")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "e5f4b57d-c6e3-5f46-948f-73f3885d9059"))
+    (comp
+      (ref "U31")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "KBfqOHSJBy")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "c939d57f-1437-5c6e-92e4-85dd3969c996"))
+    (comp
+      (ref "U32")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "frcM4zl4Cn")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "c7e14e0d-cbf1-5902-81d7-8c482b57dad9"))
+    (comp
+      (ref "U33")
+      (value "15K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "3WGXpDnol2")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "69ddf6e3-3526-5b14-9e8a-ccc85ee389ae"))
+    (comp
+      (ref "U34")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "EIryJ8v3DK")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "08618277-6f3a-56f8-8049-5ff622b891d5"))
+    (comp
+      (ref "U35")
+      (value "15K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "kw1eyHx1FN")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "075a6cbe-4344-5375-b362-c279f97e210b"))
+    (comp
+      (ref "U36")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "OfgJJ8K28J")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "1feffc53-a40c-5839-a0e5-7e123cf9cd26"))
+    (comp
+      (ref "U37")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "yjKAJCJZVD")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "913f089d-5d0a-51f0-b4ee-17f6bc9c4e3c"))
+    (comp
+      (ref "U38")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "MGrK9L_4vY")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "aed47a8d-d562-5598-a405-34055b4e4b6c"))
+    (comp
+      (ref "U39")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "tbY9YHHgy4")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "8f18c407-4f8e-592f-b759-46840a85b5b2"))
+    (comp
+      (ref "U3_XOP1")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "Vus3K5nfwU")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:25"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "437139c5-2632-52e9-80f7-9f83d695de12"))
+    (comp
+      (ref "U3_XOP2")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "pyQs3Qn8iY")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:26"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "9944bc78-df6c-5196-9416-e6b89496534c"))
+    (comp
+      (ref "U3_XOP3")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "Su3cSi_mud")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:27"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "07f9588e-3cde-59e9-99e4-effcc308968e"))
+    (comp
+      (ref "U3_XOP4")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "sNLo0cTJqC")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:28"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "cc98e3f8-fb58-5426-b52e-a8116163a043"))
+    (comp
+      (ref "U3_XOP5")
+      (value "ADA4817-1")
+      (description "")
+      (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "pJi0PkqbYW")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:29"))
+      (libsource
+        (lib "NO_LIB")
+        (part "ADA4817-1"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "101839aa-cbd7-5869-a470-7522b0b6c609"))
+    (comp
+      (ref "U40")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "9M8xKTmffZ")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "f12e475e-1b65-5699-823b-ee7d199fcf7d"))
+    (comp
+      (ref "U41")
+      (value "160nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "W7YR4BBT38")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "5ec39c4c-5ee7-5d3c-9752-645c842597bd"))
+    (comp
+      (ref "U42")
+      (value "160nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "PYFLQJtF_P")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "f055700e-c997-50a1-87f6-f0a5a05cff2e"))
+    (comp
+      (ref "U48")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "cRo674oBFo")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "401a3fc0-4b3c-5ba7-807a-6d15f5457c72"))
+    (comp
+      (ref "U49")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "7kGb67C_R8")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "dffb94b4-dd86-5818-b487-639c541faba5"))
+    (comp
+      (ref "U50")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "BSVfzqXsth")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "5d1abf3d-f08d-5964-8ef0-f7ada3605aeb"))
+    (comp
+      (ref "U51")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "JaXqb1FZJ7")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "f8dc8841-ef7b-5929-b335-03a24744bdac"))
+    (comp
+      (ref "U52")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "hiZ0zBk8Hb")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "548b0062-fdf5-5ad3-ad5b-75fdcce12fa6"))
+    (comp
+      (ref "U53")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "RecxvDfR_h")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "74deed2f-6cbb-548a-a38b-f6e5ea2c5e7e"))
+    (comp
+      (ref "U54")
+      (value "15K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "qzxUjYTR19")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "bfe0ffc2-9827-5826-835c-bf80dd075a95"))
+    (comp
+      (ref "U55")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "XKAgox3ze5")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "08e54955-9008-56ad-af4d-e5ffdc9144bb"))
+    (comp
+      (ref "U56")
+      (value "15K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "SbjkJLKBnq")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "77fce436-a271-5f63-9633-58321e9038fb"))
+    (comp
+      (ref "U57")
+      (value "750")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "JSCGvu0PAT")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "ad919a4a-a338-58a5-b126-a10cdc79989c"))
+    (comp
+      (ref "U58")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "pSosuhP8rg")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "f4752c00-e110-585f-a410-fbd92c553cc4"))
+    (comp
+      (ref "U59")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "0TLJ4MWGQv")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "191e5bd1-cd36-57e8-834a-d265b75798fa"))
+    (comp
+      (ref "U6")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "XmutjO8X6Y")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "460af83a-123e-5291-9666-94a2017fa863"))
+    (comp
+      (ref "U60")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "22e3MKBoQ4")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "8656f97b-c630-5568-b91c-4e357141d1b8"))
+    (comp
+      (ref "U61")
+      (value "33nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "gmr4IqcWWL")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "0fb047a6-cdc4-5d4a-9c9f-6ea9fcb1ff78"))
+    (comp
+      (ref "U62")
+      (value "160nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "TnSseMYwFv")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "9a2b9d51-1d72-5b3e-96e0-9d70e16e71d0"))
+    (comp
+      (ref "U63")
+      (value "160nF")
+      (description "")
+      (footprint "Capacitor_SMD:C_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "jYLlqB6A8p")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:32"))
+      (libsource
+        (lib "NO_LIB")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "dc1e588c-18b1-581f-a881-72e33a9f7989"))
+    (comp
+      (ref "U7")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "1FVM4ZgmwR")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "ced4b281-9b23-50f2-b95e-600f93b68c35"))
+    (comp
+      (ref "U8")
+      (value "500")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "6M53oveqZt")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "b83f7e74-6b37-59a7-a707-2bd0eee4bb04"))
+    (comp
+      (ref "U9")
+      (value "49.5K")
+      (description "")
+      (footprint "Resistor_SMD:R_0805_2012Metric")
+      (fields
+        (field
+          (name "Description"))
+        (field
+          (name "Footprint") "Resistor_SMD:R_0805_2012Metric")
+        (field
+          (name "Datasheet"))
+        (field
+          (name "SKiDL Tag") "HixpzwpBi6")
+        (field
+          (name "SKiDL Line") "generate_kicad_schema.py:31"))
+      (libsource
+        (lib "NO_LIB")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "549f3bb3-303b-50ed-a6d7-857f990bb989")))
+  (nets
+    (net
+      (code 1)
+      (name "GND")
+      (class "Default")
+      (node
+        (ref "RL")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rref")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U14")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U21")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U35")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U42")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U56")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U63")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 2)
+      (name "U1_N11")
+      (class "Default")
+      (node
+        (ref "U10")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U11")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U19")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP4")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 3)
+      (name "U1_N12")
+      (class "Default")
+      (node
+        (ref "U11")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U18")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP3")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U9")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 4)
+      (name "U1_N13")
+      (class "Default")
+      (node
+        (ref "U17")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP2")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U7")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U8")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 5)
+      (name "U1_N14")
+      (class "Default")
+      (node
+        (ref "U16")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP1")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U6")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U8")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 6)
+      (name "U1_N3")
+      (class "Default")
+      (node
+        (ref "U16")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP1")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP3")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U6")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 7)
+      (name "U1_N4")
+      (class "Default")
+      (node
+        (ref "U17")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP2")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP4")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U7")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 8)
+      (name "U1_N5")
+      (class "Default")
+      (node
+        (ref "U13")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U18")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP3")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U9")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 9)
+      (name "U1_N6")
+      (class "Default")
+      (node
+        (ref "U10")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U15")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U19")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP4")
+        (pin "6")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 10)
+      (name "U1_N8")
+      (class "Default")
+      (node
+        (ref "U14")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U15")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP5")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U21")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 11)
+      (name "U1_N9")
+      (class "Default")
+      (node
+        (ref "U12")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U13")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP5")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U20")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 12)
+      (name "U1_OUT")
+      (class "Default")
+      (node
+        (ref "Rf1")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rin1")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U12")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP5")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U20")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 13)
+      (name "U1_VN")
+      (class "Default")
+      (node
+        (ref "Rf1")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rg")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP1")
+        (pin "3")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 14)
+      (name "U1_VP")
+      (class "Default")
+      (node
+        (ref "U1_XOP2")
+        (pin "3")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 15)
+      (name "U2_N11")
+      (class "Default")
+      (node
+        (ref "U2_XOP4")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U31")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U32")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U40")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 16)
+      (name "U2_N12")
+      (class "Default")
+      (node
+        (ref "U2_XOP3")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U30")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U32")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U39")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 17)
+      (name "U2_N13")
+      (class "Default")
+      (node
+        (ref "U28")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U29")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP2")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U38")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 18)
+      (name "U2_N14")
+      (class "Default")
+      (node
+        (ref "U27")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U29")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP1")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U37")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 19)
+      (name "U2_N3")
+      (class "Default")
+      (node
+        (ref "U27")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP1")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP3")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U37")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 20)
+      (name "U2_N4")
+      (class "Default")
+      (node
+        (ref "U28")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP2")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP4")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U38")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 21)
+      (name "U2_N5")
+      (class "Default")
+      (node
+        (ref "U2_XOP3")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U30")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U34")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U39")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 22)
+      (name "U2_N6")
+      (class "Default")
+      (node
+        (ref "U2_XOP4")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U31")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U36")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U40")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 23)
+      (name "U2_N8")
+      (class "Default")
+      (node
+        (ref "U2_XOP5")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U35")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U36")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U42")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 24)
+      (name "U2_N9")
+      (class "Default")
+      (node
+        (ref "U2_XOP5")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U33")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U34")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U41")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 25)
+      (name "U2_OUT")
+      (class "Default")
+      (node
+        (ref "Rf2")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rin2")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP5")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U33")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U41")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 26)
+      (name "U2_VCC")
+      (class "Default")
+      (node
+        (ref "U1_XOP1")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP2")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP3")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP4")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP5")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP1")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP2")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP3")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP4")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP5")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP1")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP2")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP3")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP4")
+        (pin "7")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP5")
+        (pin "7")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 27)
+      (name "U2_VEE")
+      (class "Default")
+      (node
+        (ref "U1_XOP1")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP2")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP3")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP4")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U1_XOP5")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP1")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP2")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP3")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP4")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP5")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP1")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP2")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP3")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP4")
+        (pin "4")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP5")
+        (pin "4")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 28)
+      (name "U2_VN")
+      (class "Default")
+      (node
+        (ref "Rf2")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rg")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U2_XOP1")
+        (pin "3")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 29)
+      (name "U2_VP")
+      (class "Default")
+      (node
+        (ref "U2_XOP2")
+        (pin "3")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 30)
+      (name "U3_N11")
+      (class "Default")
+      (node
+        (ref "U3_XOP4")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U52")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U53")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U61")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 31)
+      (name "U3_N12")
+      (class "Default")
+      (node
+        (ref "U3_XOP3")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U51")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U53")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U60")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 32)
+      (name "U3_N13")
+      (class "Default")
+      (node
+        (ref "U3_XOP2")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U49")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U50")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U59")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 33)
+      (name "U3_N14")
+      (class "Default")
+      (node
+        (ref "U3_XOP1")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U48")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U50")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U58")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 34)
+      (name "U3_N3")
+      (class "Default")
+      (node
+        (ref "U3_XOP1")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP3")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U48")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U58")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 35)
+      (name "U3_N4")
+      (class "Default")
+      (node
+        (ref "U3_XOP2")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP4")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U49")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U59")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 36)
+      (name "U3_N5")
+      (class "Default")
+      (node
+        (ref "U3_XOP3")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U51")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U55")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U60")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 37)
+      (name "U3_N6")
+      (class "Default")
+      (node
+        (ref "U3_XOP4")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U52")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U57")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U61")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 38)
+      (name "U3_N8")
+      (class "Default")
+      (node
+        (ref "U3_XOP5")
+        (pin "3")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U56")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U57")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U63")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 39)
+      (name "U3_N9")
+      (class "Default")
+      (node
+        (ref "U3_XOP5")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U54")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U55")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U62")
+        (pin "1")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 40)
+      (name "U3_OUT")
+      (class "Default")
+      (node
+        (ref "RL")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rfb")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP5")
+        (pin "6")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U54")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U62")
+        (pin "2")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 41)
+      (name "U3_VN")
+      (class "Default")
+      (node
+        (ref "Rfb")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rin2")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP1")
+        (pin "3")
+        (pintype "UNSPECIFIED")))
+    (net
+      (code 42)
+      (name "U3_VP")
+      (class "Default")
+      (node
+        (ref "Rin1")
+        (pin "2")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "Rref")
+        (pin "1")
+        (pintype "UNSPECIFIED"))
+      (node
+        (ref "U3_XOP2")
+        (pin "3")
+        (pintype "UNSPECIFIED")))))

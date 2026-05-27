@@ -1,4 +1,4 @@
-Listed directory AmplificadorDeInstrumentaci%C3%B3n250KHz_A_eq_20000
+Listed directory AmplificadorDeInstrumentacion250KHz_A_eq_20000
 Viewed SUPEROPAMP.CIR:1-44
 Viewed superopamp_ngspice.cir:1-112
 Viewed simulate_superopamp.py:1-217

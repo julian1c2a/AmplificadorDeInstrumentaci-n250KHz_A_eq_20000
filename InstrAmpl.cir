@@ -270,14 +270,14 @@ R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
 * --- STAGE 2: Composite Power Difference Amplifier (Av2 = Rfb/Rin = 100) ---
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
+XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
 R_fb         vout_final vn3 75K
 
-* Heavy 50 Ohm Load to Test High-Current Drive Capability
-RL           vout_final 0 50
+* Standard 10k Ohm Load for High-Impedance Drive
+RL           vout_final 0 10K
 
 * Simulation Control block
 .control

@@ -298,13 +298,13 @@ R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
 * --- STAGE 2: Composite Power Difference Amplifier (Av2 = 100) ---
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
+XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
 R_fb         vout_final vn3 75K
 
-RL           vout_final 0 50
+RL           vout_final 0 10K
 
 .options method=gear cmin=1e-12 reltol=1e-3
 
@@ -343,13 +343,13 @@ Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
+XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
 R_fb         vout_final vn3 75K
 
-RL           vout_final 0 50
+RL           vout_final 0 10K
 
 .options method=gear cmin=1e-12 reltol=1e-3
 
@@ -381,7 +381,7 @@ Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
+XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
@@ -455,13 +455,13 @@ Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
+XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
 R_fb         vout_final vn3 75K
 
-RL           vout_final 0 50
+RL           vout_final 0 10K
 
 .options method=gear cmin=1e-12 reltol=1e-3
 
@@ -705,19 +705,22 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
                 
         print(f"- {label} ({f_val/1e6:.2f} MHz): Peak-to-Peak Input = {v_pp_in*1e6:.2f} uV, Output = {v_pp_out:.3f} V, Actual Gain = {actual_gain:.1f} ({20*np.log10(actual_gain):.2f} dB), Phase Shift = {phase_shift_deg:.1f}°")
         
-        # Plot waveforms
-        ax.plot(t_extracted, vout_extracted, color=c_primary, linewidth=2.5, label='Output $V_{out}$ (Right Axis)')
+        # Plot waveforms (AC-coupled for clarity, removing transient DC drift)
+        vout_dc_offset = np.mean(vout_extracted)
+        vout_ac = vout_extracted - vout_dc_offset
+        
+        ax.plot(t_extracted, vout_ac, color=c_primary, linewidth=2.5, label='AC Output $V_{out}$ (Right Axis)')
         ax_in = ax.twinx()
         ax_in.plot(t_extracted, vin_extracted * 1e6, color='#10b981', linewidth=1.5, linestyle=':', label='Input $V_{in}$ (Left Axis)')
         
         ax.set_title(f"Response at {label} ({f_val/1e6:.2f} MHz)", fontsize=11, fontweight='bold', pad=8)
         ax.set_xlabel("Time (ns)", fontsize=9)
-        ax.set_ylabel("Output Voltage (V)", fontsize=9, color=c_primary)
+        ax.set_ylabel("AC Output Voltage (V)", fontsize=9, color=c_primary)
         ax_in.set_ylabel("Input Voltage (uV)", fontsize=9, color='#10b981')
         ax.grid(True, color=c_grid)
         
         # Display characteristics
-        stats_text = f"Gain: {actual_gain:.0f} ({20*np.log10(actual_gain):.1f} dB)\\nPhase: {phase_shift_deg:.1f}°"
+        stats_text = f"Gain: {actual_gain:.0f} ({20*np.log10(actual_gain):.1f} dB)\nPhase: {phase_shift_deg:.1f}°\nDC Shift: {vout_dc_offset:.1f}V"
         ax.text(0.05, 0.05, stats_text, transform=ax.transAxes, bbox=dict(boxstyle="round,pad=0.4", fc='white', ec=c_border, alpha=0.9), fontsize=9, family='monospace')
         
         # Combine legends

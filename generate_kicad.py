@@ -3,7 +3,7 @@ import re
 import uuid
 
 symbols_dir = r"C:\msys64\ucrt64\share\kicad\symbols"
-output_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
+output_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentacion250KHz_A_eq_20000"
 
 def get_uuid():
     return str(uuid.uuid4())

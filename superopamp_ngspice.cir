@@ -212,6 +212,55 @@ XOP5         8 9 vcc vee out out vcc ADA4817
 * ----------------------------------------------------------------------
 
 
+* ----------------------------------------------------------------------
+* HIGH-OUTPUT-CURRENT AD8397 OP-AMP MACROMODEL DEFINITION
+* ----------------------------------------------------------------------
+.subckt AD8397 vp vn out vcc vee
+Rin vp vn 10Meg
+Cin vp vn 1.5p
+G1 0 int vp vn 1m
+R1 int 0 100Meg
+C1 int 0 2.3e-12
+E2 int2 0 int 0 1
+R2 int2 int3 1k
+C2 int3 0 1.99e-12
+E3 out_pre 0 int3 0 1
+Rout out_pre out 1.5
+.ends AD8397
+* ----------------------------------------------------------------------
+
+
+* ----------------------------------------------------------------------
+* HIGH-POWER SUPEROPAMPWITHPOWOUT SUBCIRCUIT DEFINITION
+* ----------------------------------------------------------------------
+.subckt SuperOpAmpWithPowOut vp vn out ref vcc vee
+C2          13 4 1.6P 
+C1          3 14 1.6P 
+R3          14 13 500 
+R2          4 13 49.5K 
+R1          3 14 49.5K 
+XOP2         vp 13 vcc vee 4 4 vcc ADA4817
+XOP1         vn 14 vcc vee 3 3 vcc ADA4817
+C4          11 6 1.6P 
+C3          5 12 1.6P 
+R6          12 11 500 
+R5          6 11 49.5K 
+R4          5 12 49.5K 
+XOP4         4 11 vcc vee 6 6 vcc ADA4817
+XOP3         3 12 vcc vee 5 5 vcc ADA4817
+C6          ref 8 8P 
+C5          9 out_pre 8P 
+R10         6 8 750 
+R9          8 ref 15K 
+R8          5 9 750 
+R7          9 out_pre 15K 
+XOP5         8 9 vcc vee out_pre out_pre vcc ADA4817
+XOUT         out_pre out out vcc vee AD8397
+.ends SuperOpAmpWithPowOut
+* ----------------------------------------------------------------------
+
+
+
 .TEMP 27
 
 * Power Supplies

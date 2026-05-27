@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 ngspice_path = r"C:\msys64\ucrt64\bin\ngspice.exe"
-workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
+workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentacion250KHz_A_eq_20000"
 
 def run_simulation():
     cir_path = os.path.join(workspace_dir, "superopamp_ngspice.cir")

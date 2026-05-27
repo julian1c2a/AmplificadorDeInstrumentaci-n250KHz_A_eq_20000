@@ -266,8 +266,8 @@ E_in_n       vn 0 vdiff_node 0 -0.5
 XU1          vp vn1 vout1 0 cc dd SuperOpAmp
 XU2          vn vn2 vout2 0 cc dd SuperOpAmp
 Rg           vn1 vn2 500
-R_f1         vout1 vn1 49.5K
-R_f2         vout2 vn2 49.5K
+R_f1         vout1 vn1 49.75K
+R_f2         vout2 vn2 49.75K
 
 * --- STAGE 2: Composite Power Difference Amplifier (Av2 = Rfb/Rin = 100) ---
 XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
@@ -295,8 +295,8 @@ RL           vout_final 0 50
   
   * 3. Transient Response Analysis
   * 10kHz sine wave, 3 cycles = 300us. Step size 100ns.
-  tran 100n 300u
-  wrdata instrampl_tran.txt v(vp,vn) v(vout_final)
+  * tran 100n 300u
+  * wrdata instrampl_tran.txt v(vp,vn) v(vout_final)
   
   echo "=== SIMULATION COMPLETED SUCCESSFULLY ==="
 .endc

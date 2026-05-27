@@ -242,7 +242,7 @@ V3          cc 0 DC 20
 V2          0 dd DC 20
 
 * Balanced input source at specific transient frequency
-Vdiff_node   vdiff_node 0 DC 0 AC 1 SIN(0 100u 8.441559e+06)
+Vdiff_node   vdiff_node 0 DC 0 AC 1 SIN(0 100u 1.688312e+07)
 E_in_p       vp 0 vdiff_node 0 0.5
 E_in_n       vn 0 vdiff_node 0 -0.5
 
@@ -263,7 +263,7 @@ RL           vout_final 0 50
 .options method=gear cmin=1e-12 reltol=1e-3
 
 .control
-  tran 1.184615e-09 6.396923e-06
-  wrdata instrampl_tran_0_5_fc.txt v(vp,vn) v(vout_final)
+  tran 5.923077e-10 3.198461e-06
+  wrdata instrampl_tran_fc.txt v(vp,vn) v(vout_final)
 .endc
 .END

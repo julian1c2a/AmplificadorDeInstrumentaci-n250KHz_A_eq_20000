@@ -436,8 +436,8 @@ for key, (f_val, label) in frequencies.items():
     print(f"Executing Transient simulation at {label} ({f_val/1e6:.2f} MHz)...")
     
     period = 1.0 / f_val
-    t_step = period / 100.0  # 100 points per period
-    t_stop = 54.0 * period   # 54 periods
+    t_step = period / 40.0  # 40 points per period for speed and accuracy
+    t_stop = 8.0 * period   # 8 periods (steady state is reached in <2 periods at MHz)
     
     tran_netlist = header_models + f"""
 .TEMP 27
@@ -675,9 +675,9 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
         vin_tran = tran_data[:, 1]
         vout_tran = tran_data[:, 3]
         
-        # Calculate exactly the period and keep last 4 periods (periods 50 to 54)
+        # Calculate exactly the period and keep last 4 periods (periods 4 to 8)
         period = 1.0 / f_val
-        t_start_extract = 50.0 * period
+        t_start_extract = 4.0 * period
         
         extract_mask = time_sec >= t_start_extract
         t_extracted = (time_sec[extract_mask] - t_start_extract) * 1e9  # nanoseconds
@@ -734,7 +734,7 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
     else:
         ax.text(0.5, 0.5, "Simulation failed", ha='center', va='center')
 
-plt.suptitle("Instrumentation Amplifier - Transient Response at Multiple Frequencies (Last 4 Cycles of 54)", fontsize=16, fontweight='bold', y=0.99)
+plt.suptitle("Instrumentation Amplifier - Transient Response at Multiple Frequencies (Last 4 Cycles of 8)", fontsize=16, fontweight='bold', y=0.99)
 fig_tran_png = os.path.join(workspace_dir, "instrampl_transient_characterization.png")
 plt.savefig(fig_tran_png, dpi=300, bbox_inches='tight')
 plt.close()

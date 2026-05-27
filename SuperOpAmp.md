@@ -376,3 +376,75 @@ El análisis dinámico de CA en `ngspice` ha demostrado una precisión y estabil
 * **Ganancia a 10 Hz (o menos):** **$86.0164	ext{ dB}$** (Ganancia Lineal: **$19,990.2$**, error de solo **$0.048\%$**).
 * **Ganancia a 500 kHz (o más):** **$86.0189	ext{ dB}$** (Ganancia Lineal: **$19,996.2$**, error de solo **$0.019\%$**).
 * La ganancia se mantiene increíblemente plana de forma matemática a lo largo de todo el rango espectral de interés, extendiéndose de forma lineal hasta 1 MHz.
+
+---
+
+### 10. Esquemático Vectorial (KiCad & LaTeX)
+
+Para cumplir con los estándares de calidad visual exigidos para publicación (y facilitar la comprensión de la arquitectura del `SuperOpAmp` antes del enrutamiento físico en PCB), se ha generado la representación vectorial de su topología utilizando `circuitikz`.
+
+Además, en el espacio de trabajo se ha programado el script `testbenches/generate_kicad_schema.py`, el cual utiliza la librería `skidl` de Python para compilar y generar la red estructural base de este circuito exportando automáticamente un fichero netlist `InstrAmpl.net` directamente importable y enrutable en **KiCad**.
+
+```latex
+\begin{figure}[h]
+\centering
+\begin{circuitikz}[scale=0.75, transform shape]
+  % Stage 1: Buffers de entrada
+  \draw (0, 3) node[op amp] (op1) {XOP1};
+  \draw (0, -3) node[op amp] (op2) {XOP2};
+  
+  \draw (op1.+) node[left] {$V_{IN-}$};
+  \draw (op2.+) node[left] {$V_{IN+}$};
+  
+  \draw (op1.-) -- ++(0, -1.5) coordinate (fb1);
+  \draw (op2.-) -- ++(0, 1.5) coordinate (fb2);
+  \draw (fb1) to[R, l=$R_3$ (500$\,\Omega$)] (fb2);
+  
+  \draw (op1.out) -- ++(1,0) coordinate (out1);
+  \draw (op2.out) -- ++(1,0) coordinate (out2);
+  
+  % Lazos de realimentacion Stage 1
+  \draw (out1) -- ++(0, 2) to[R, l=$R_1$ (49.5k$\Omega$)] ++(-2.2, 0) -| (fb1);
+  \draw (out1) -- ++(0, 3.5) to[C, l=$C_1$ (33nF)] ++(-2.2, 0) -| (fb1);
+  \draw (out2) -- ++(0, -2) to[R, l=$R_2$ (49.5k$\Omega$)] ++(-2.2, 0) -| (fb2);
+  \draw (out2) -- ++(0, -3.5) to[C, l=$C_2$ (33nF)] ++(-2.2, 0) -| (fb2);
+  
+  % Stage 2: Etapa diferencial intermedia
+  \draw (6, 3) node[op amp] (op3) {XOP3};
+  \draw (6, -3) node[op amp] (op4) {XOP4};
+  
+  \draw (out1) -- (op3.+);
+  \draw (out2) -- (op4.+);
+  
+  \draw (op3.-) -- ++(0, -1.5) coordinate (fb3);
+  \draw (op4.-) -- ++(0, 1.5) coordinate (fb4);
+  \draw (fb3) to[R, l=$R_6$ (500$\,\Omega$)] (fb4);
+  
+  \draw (op3.out) -- ++(1,0) coordinate (out3);
+  \draw (op4.out) -- ++(1,0) coordinate (out4);
+  
+  % Lazos de realimentacion Stage 2
+  \draw (out3) -- ++(0, 2) to[R, l=$R_4$ (49.5k$\Omega$)] ++(-2.2, 0) -| (fb3);
+  \draw (out3) -- ++(0, 3.5) to[C, l=$C_3$ (33nF)] ++(-2.2, 0) -| (fb3);
+  \draw (out4) -- ++(0, -2) to[R, l=$R_5$ (49.5k$\Omega$)] ++(-2.2, 0) -| (fb4);
+  \draw (out4) -- ++(0, -3.5) to[C, l=$C_4$ (33nF)] ++(-2.2, 0) -| (fb4);
+  
+  % Stage 3: Amplificador de diferencia
+  \draw (12, 0) node[op amp] (op5) {XOP5};
+  
+  \draw (out3) -- ++(0.5, 0) to[R, l=$R_8$ (750$\,\Omega$)] (op5.-);
+  \draw (out4) -- ++(0.5, 0) to[R, l=$R_{10}$ (750$\,\Omega$)] (op5.+);
+  
+  % Lazos y referencias Stage 3
+  \draw (op5.-) -- ++(0, 2) to[R, l=$R_7$ (15k$\Omega$)] ++(2.2, 0) -| (op5.out);
+  \draw (op5.-) -- ++(0, 3.5) to[C, l=$C_5$ (160nF)] ++(2.2, 0) -| (op5.out);
+  
+  \draw (op5.+) -- ++(0, -2) to[R, l=$R_9$ (15k$\Omega$)] ++(2.2, 0) node[ground] {};
+  \draw (op5.+) -- ++(0, -3.5) to[C, l=$C_6$ (160nF)] ++(2.2, 0) node[ground] {};
+  
+  \draw (op5.out) to[short, -o] ++(1, 0) node[right] {$V_{OUT}$};
+
+\end{circuitikz}
+\caption{Esquema vectorial en LaTeX del macro-bloque SuperOpAmp de 5 operacionales.}
+\end{figure}
+```

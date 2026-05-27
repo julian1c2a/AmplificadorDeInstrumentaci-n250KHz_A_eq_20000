@@ -24,13 +24,13 @@ Vdiff_node   vdiff_node 0 DC 0 AC 1 SIN(0 100u {f_val:.6e})
 E_in_p       vp 0 vdiff_node 0 0.5
 E_in_n       vn 0 vdiff_node 0 -0.5
 
-XU1          vp vn1 vout1 0 cc dd SuperOpAmp
-XU2          vn vn2 vout2 0 cc dd SuperOpAmp
+XU1          vp vn1 vout1 0 cc dd SupOpAmp
+XU2          vn vn2 vout2 0 cc dd SupOpAmp
 Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut
+XU3          vp3 vn3 vout_final 0 cc dd SupOpAmpWithPowOut
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750

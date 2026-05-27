@@ -7,7 +7,7 @@ with open(script_path, "r", encoding="utf-8") as f:
     content = f.read()
 
 # Replace XU3 instantiations in netlists
-content = content.replace("XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmpWithPowOut", "XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp")
+content = content.replace("XU3          vp3 vn3 vout_final 0 cc dd SupOpAmpWithPowOut", "XU3          vp3 vn3 vout_final 0 cc dd SupOpAmp")
 
 # Replace load resistor RL values in netlists
 content = content.replace("RL           vout_final 0 50", "RL           vout_final 0 10K")

@@ -19,7 +19,7 @@ c_template += Pin(num='2', name='2')
 
 def create_superopamp(name_prefix):
     """
-    Creates a SuperOpAmp block using 5 ADA4817 op-amps.
+    Creates a SupOpAmp block using 5 ADA4817 op-amps.
     Returns the IO pins: (vp, vn, out, ref, vcc, vee)
     """
     xop1 = op_template(ref=f'{name_prefix}_XOP1')

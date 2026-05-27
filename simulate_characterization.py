@@ -20,7 +20,7 @@ os.makedirs(csv_dir, exist_ok=True)
 os.makedirs(png_dir, exist_ok=True)
 os.makedirs(svg_dir, exist_ok=True)
 
-# Define the common header (ADA4817, AD8397, SuperOpAmp, SuperOpAmpWithPowOut)
+# Define the common header (ADA4817, AD8397, SupOpAmp, SupOpAmpWithPowOut)
 header_models = """* HIGH-SPEED PRECISION INSTRUMENTATION AMPLIFIER (ngspice format)
 * ----------------------------------------------------------------------
 * HIGH-SPEED ADA4817 MACROMODEL DEFINITION (ngspice Compatible)
@@ -206,7 +206,7 @@ Rout out_pre out 1.5
 * ----------------------------------------------------------------------
 * STANDARD SUPEROPAMP SUBCIRCUIT DEFINITION
 * ----------------------------------------------------------------------
-.subckt SuperOpAmp vp vn out ref vcc vee
+.subckt SupOpAmp vp vn out ref vcc vee
 C2          13 4 1.6P 
 C1          3 14 1.6P 
 R3          14 13 500 
@@ -228,13 +228,13 @@ R9          8 ref 15K
 R8          5 9 750 
 R7          9 out 15K 
 XOP5         8 9 vcc vee out out vcc ADA4817
-.ends SuperOpAmp
+.ends SupOpAmp
 * ----------------------------------------------------------------------
 
 * ----------------------------------------------------------------------
 * HIGH-POWER SUPEROPAMPWITHPOWOUT SUBCIRCUIT DEFINITION
 * ----------------------------------------------------------------------
-.subckt SuperOpAmpWithPowOut vp vn out ref vcc vee
+.subckt SupOpAmpWithPowOut vp vn out ref vcc vee
 C2          13 4 1.6P 
 C1          3 14 1.6P 
 R3          14 13 500 
@@ -257,7 +257,7 @@ R8          5 9 750
 R7          9 out_pre 15K 
 XOP5         8 9 vcc vee out_pre out_pre vcc ADA4817
 XOUT         out_pre out out vcc vee AD8397
-.ends SuperOpAmpWithPowOut
+.ends SupOpAmpWithPowOut
 * ----------------------------------------------------------------------
 """
 
@@ -303,14 +303,14 @@ E_in_p       vp 0 vdiff_node 0 0.5
 E_in_n       vn 0 vdiff_node 0 -0.5
 
 * --- STAGE 1: Composite Input Buffers (Av1 = 200) ---
-XU1          vp vn1 vout1 0 cc dd SuperOpAmp
-XU2          vn vn2 vout2 0 cc dd SuperOpAmp
+XU1          vp vn1 vout1 0 cc dd SupOpAmp
+XU2          vn vn2 vout2 0 cc dd SupOpAmp
 Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
 * --- STAGE 2: Composite Power Difference Amplifier (Av2 = 100) ---
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
+XU3          vp3 vn3 vout_final 0 cc dd SupOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
@@ -349,13 +349,13 @@ Vdiff_node   vdiff_node 0 DC 0 AC 1
 E_in_p       vp 0 vdiff_node 0 1.0
 E_in_n       vn 0 vdiff_node 0 1.0
 
-XU1          vp vn1 vout1 0 cc dd SuperOpAmp
-XU2          vn vn2 vout2 0 cc dd SuperOpAmp
+XU1          vp vn1 vout1 0 cc dd SupOpAmp
+XU2          vn vn2 vout2 0 cc dd SupOpAmp
 Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
+XU3          vp3 vn3 vout_final 0 cc dd SupOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
@@ -387,13 +387,13 @@ Vdiff_node   vdiff_node 0 DC 0 AC 0
 E_in_p       vp 0 vdiff_node 0 0.5
 E_in_n       vn 0 vdiff_node 0 -0.5
 
-XU1          vp vn1 vout1 0 cc dd SuperOpAmp
-XU2          vn vn2 vout2 0 cc dd SuperOpAmp
+XU1          vp vn1 vout1 0 cc dd SupOpAmp
+XU2          vn vn2 vout2 0 cc dd SupOpAmp
 Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
+XU3          vp3 vn3 vout_final 0 cc dd SupOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750
@@ -461,13 +461,13 @@ Vdiff_node   vdiff_node 0 DC 0 AC 1 SIN(0 100u {f_val:.6e})
 E_in_p       vp 0 vdiff_node 0 0.5
 E_in_n       vn 0 vdiff_node 0 -0.5
 
-XU1          vp vn1 vout1 0 cc dd SuperOpAmp
-XU2          vn vn2 vout2 0 cc dd SuperOpAmp
+XU1          vp vn1 vout1 0 cc dd SupOpAmp
+XU2          vn vn2 vout2 0 cc dd SupOpAmp
 Rg           vn1 vn2 500
 R_f1         vout1 vn1 49.75K
 R_f2         vout2 vn2 49.75K
 
-XU3          vp3 vn3 vout_final 0 cc dd SuperOpAmp
+XU3          vp3 vn3 vout_final 0 cc dd SupOpAmp
 R_in1        vout1 vp3 750
 R_ref        vp3 0 75K
 R_in2        vout2 vn3 750

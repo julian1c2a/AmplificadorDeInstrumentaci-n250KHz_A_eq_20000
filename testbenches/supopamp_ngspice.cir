@@ -179,7 +179,7 @@ RS4	104	313	1e-3
 *   vcc : Positive DC power supply rail
 *   vee : Negative DC power supply rail
 *
-.subckt SuperOpAmp vp vn out ref vcc vee
+.subckt SupOpAmp vp vn out ref vcc vee
 
 * --- ETAPA 1: Buffer Diferencial ---
 C2          13 4 1.6P 
@@ -208,7 +208,7 @@ R8          5 9 750
 R7          9 out 15K 
 XOP5         8 9 vcc vee out out vcc ADA4817
 
-.ends SuperOpAmp
+.ends SupOpAmp
 * ----------------------------------------------------------------------
 
 
@@ -233,7 +233,7 @@ Rout out_pre out 1.5
 * ----------------------------------------------------------------------
 * HIGH-POWER SUPEROPAMPWITHPOWOUT SUBCIRCUIT DEFINITION
 * ----------------------------------------------------------------------
-.subckt SuperOpAmpWithPowOut vp vn out ref vcc vee
+.subckt SupOpAmpWithPowOut vp vn out ref vcc vee
 C2          13 4 1.6P 
 C1          3 14 1.6P 
 R3          14 13 500 
@@ -256,7 +256,7 @@ R8          5 9 750
 R7          9 out_pre 15K 
 XOP5         8 9 vcc vee out_pre out_pre vcc ADA4817
 XOUT         out_pre out out vcc vee AD8397
-.ends SuperOpAmpWithPowOut
+.ends SupOpAmpWithPowOut
 * ----------------------------------------------------------------------
 
 
@@ -271,8 +271,8 @@ V2          0 dd DC 20
 * DC = 0V, AC = 1V, and 10uV peak, 100kHz sine wave for transient analysis (in-band)
 Vin          in 0 DC 0 AC 1 SIN(0 10u 100k)
 
-* Circuit Instantiation (Using the SuperOpAmp subcircuit)
-XSuperOpAmp  in 0 out 0 cc dd SuperOpAmp
+* Circuit Instantiation (Using the SupOpAmp subcircuit)
+XSupOpAmp  in 0 out 0 cc dd SupOpAmp
 
 * Simulation Control block
 .control

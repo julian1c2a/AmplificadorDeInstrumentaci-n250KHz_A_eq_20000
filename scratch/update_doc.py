@@ -1,7 +1,7 @@
 import os
 
 workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
-md_path = os.path.join(workspace_dir, "SuperOpAmp.md")
+md_path = os.path.join(workspace_dir, "SupOpAmp.md")
 
 with open(md_path, "r", encoding="utf-8") as f:
     content = f.read()
@@ -14,9 +14,9 @@ new_sections = """
 
 ---
 
-### 8. Amplificador de Salida de Alta Potencia (`SuperOpAmpWithPowOut`)
+### 8. Amplificador de Salida de Alta Potencia (`SupOpAmpWithPowOut`)
 
-Para dotar al SuperOpAmp de capacidades de control de corriente excepcionales, hemos diseñado un nuevo operacional con "superpoderes de salida": el **`SuperOpAmpWithPowOut`**.
+Para dotar al SupOpAmp de capacidades de control de corriente excepcionales, hemos diseñado un nuevo operacional con "superpoderes de salida": el **`SupOpAmpWithPowOut`**.
 
 Este nuevo diseño incorpora una etapa seguidora de tensión al final del circuito utilizando el macromodelo del **AD8397**.
 
@@ -31,20 +31,20 @@ El buffer de salida `AD8397` se integra inmediatamente después de la tercera et
 
 ### 9. Amplificador de Instrumentación de Ganancia 20,000 (`InstrAmpl.cir`)
 
-Utilizando el `SuperOpAmp` estándar en la etapa de entrada y el `SuperOpAmpWithPowOut` de alta potencia en la salida diferencial, hemos construido un **Amplificador de Instrumentación Completo** de ultra precisión en el archivo `InstrAmpl.cir`.
+Utilizando el `SupOpAmp` estándar en la etapa de entrada y el `SupOpAmpWithPowOut` de alta potencia en la salida diferencial, hemos construido un **Amplificador de Instrumentación Completo** de ultra precisión en el archivo `InstrAmpl.cir`.
 
 #### 9.1 Parámetros de Diseño y Ajuste de Resistencia
 Para lograr una ganancia exacta de **20,000** (86.02 dB) entre 10 Hz y 500 kHz, hemos calculado y ajustado con precisión las resistencias:
 
 1. **Etapa de Entrada Diferencial (Buffers):**
-   * Dos `SuperOpAmp` instanciados como `XU1` y `XU2`.
+   * Dos `SupOpAmp` instanciados como `XU1` y `XU2`.
    * Resistencia de ganancia global $R_g = 500\,\Omega$.
    * Resistencias de realimentación $R_{f1} = R_{f2} = \mathbf{49.75\text{ k}\Omega}$ (modificadas desde 49.5k).
    * Ganancia teórica de la primera etapa:
      $$A_{v1} = 1 + \frac{2 R_f}{R_g} = 1 + \frac{99.5\text{ k}}{500} = 200$$
 
 2. **Etapa de Salida Diferencial (Diferencia de Potencia):**
-   * Un `SuperOpAmpWithPowOut` instanciado como `XU3` alimentando una carga pesada de **$50\,\Omega$**.
+   * Un `SupOpAmpWithPowOut` instanciado como `XU3` alimentando una carga pesada de **$50\,\Omega$**.
    * Resistencias de entrada $R_{in1} = R_{in2} = 750\,\Omega$.
    * Resistencias de realimentación/referencia $R_{fb} = R_{ref} = 75\text{ k}\Omega$.
    * Ganancia de la segunda etapa:

@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Arquitectura Fractal: Top-Level}{2}{section.1}%
+\contentsline {section}{\numberline {2}Distribución de Ganancias y Dimensionamiento Pasivo}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Cálculo Etapa de Entrada}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Cálculo Etapa Sustractora}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Ganancia Global}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Métricas del Producto Final (Simulaciones SPICE)}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Transferencia de CC y Rectitud (Linearity)}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Respuesta de Frecuencia y Phase Margin}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Rechazo de Modo Común Extremo (CMRR)}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Velocidad de Respuesta e Integridad Armónica}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Conclusión}{7}{section.4}%

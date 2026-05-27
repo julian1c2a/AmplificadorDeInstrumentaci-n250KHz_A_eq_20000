@@ -228,7 +228,7 @@ def analyze_and_plot():
     else:
         ax_tran.text(0.5, 0.5, "No Transient data available", ha='center', va='center')
         
-    plt.suptitle("SuperOpAmp Instrumentation Amplifier - Detailed ngspice Characterization", fontsize=16, fontweight='bold', color='#1e293b', y=0.98)
+    plt.suptitle("SupOpAmp Instrumentation Amplifier - Detailed ngspice Characterization", fontsize=16, fontweight='bold', color='#1e293b', y=0.98)
     
     # Save the figure in premium formats
     fig_png = os.path.join(png_dir, "superopamp_analysis.png")

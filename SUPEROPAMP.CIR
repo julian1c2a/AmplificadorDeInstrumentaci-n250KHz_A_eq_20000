@@ -1,0 +1,43 @@
+SUPEROPAMP (PSpice format)
+**************************************
+**  This file was created by TINA   **
+**         www.tina.com             ** 
+**      (c) DesignSoft, Inc.        **          
+**     www.designsoftware.com       **
+**************************************
+.LIB "E:\TINA\EXAMPLES\SPICE\TSPICE.LIB"
+.LIB "E:\TINA\SPICELIB\Operational Amplifiers.LIB"
+.LIB
+.TEMP 27
+.AC DEC 20 10 1MEG
+.TRAN 2N 1U
+
+.OPTIONS ABSTOL=1P ITL1=150 ITL2=20 ITL4=10 TRTOL=7 
+.PROBE V([in]) V([out])
+
+V3          cc 0 20
+V2          0 dd 20
+V1          in 0 5
+R10         5 6 750 
+R9          6 0 10K 
+R8          7 8 750 
+R7          8 out 10K 
+XOP5         6 8 cc dd out StdOpamp
++ PARAMS: GAIN=200K RIN=10T ROUT=75 SLEWRATE=13MEG FPOLE1=15 FPOLE2=9.45MEG VOFFS=3M IBIAS=30P IOFFS=5P VDROPOH=1.5 VDROPOL=1.5
+R6          9 10 500 
+R5          5 10 49.5K 
+R4          7 9 49.5K 
+XOP4         11 10 cc dd 5 StdOpamp
++ PARAMS: GAIN=200K RIN=10T ROUT=75 SLEWRATE=13MEG FPOLE1=15 FPOLE2=9.45MEG VOFFS=3M IBIAS=30P IOFFS=5P VDROPOH=1.5 VDROPOL=1.5
+XOP3         12 9 cc dd 7 StdOpamp
++ PARAMS: GAIN=200K RIN=10T ROUT=75 SLEWRATE=13MEG FPOLE1=15 FPOLE2=9.45MEG VOFFS=3M IBIAS=30P IOFFS=5P VDROPOH=1.5 VDROPOL=1.5
+R3          13 14 500 
+R2          11 14 49.5K 
+R1          12 13 49.5K 
+XOP2         in 14 cc dd 11 StdOpamp
++ PARAMS: GAIN=200K RIN=10T ROUT=75 SLEWRATE=13MEG FPOLE1=15 FPOLE2=9.45MEG VOFFS=3M IBIAS=30P IOFFS=5P VDROPOH=1.5 VDROPOL=1.5
+XOP1         0 13 cc dd 12 StdOpamp
++ PARAMS: GAIN=200K RIN=10T ROUT=75 SLEWRATE=13MEG FPOLE1=15 FPOLE2=9.45MEG VOFFS=3M IBIAS=30P IOFFS=5P VDROPOH=1.5 VDROPOL=1.5
+
+
+.END

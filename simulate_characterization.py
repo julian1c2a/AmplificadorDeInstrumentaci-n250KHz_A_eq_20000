@@ -326,6 +326,7 @@ RL           vout_final 0 10K
   wrdata results/data/txt/instrampl_dc_char.txt v(vout_final)
   
   * AC sweep up to 500MHz to find cutoff frequency
+  ac dec 100 1 500meg
   let gain_db = vdb(vout_final)
   let phase_rad = ph(v(vout_final))
   let phase_deg = phase_rad * 180 / 3.141592653589793
@@ -683,10 +684,15 @@ plt.close()
 fig_tran, axes = plt.subplots(3, 2, figsize=(15, 15), dpi=150, gridspec_kw={'hspace': 0.35, 'wspace': 0.25})
 axes = axes.flatten()
 
-print(f"\nTransient Response at Multiple Frequencies:")
+# --- NEW PLOT 6: FFT SPECTRUM GRID ---
+fig_spec, axes_spec = plt.subplots(3, 2, figsize=(15, 15), dpi=150, gridspec_kw={'hspace': 0.35, 'wspace': 0.25})
+axes_spec = axes_spec.flatten()
+
+print(f"\nTransient Response & FFT Spectrum Analysis at Multiple Frequencies:")
 
 for i, (key, (f_val, label)) in enumerate(frequencies.items()):
     ax = axes[i]
+    ax_spec = axes_spec[i]
     tran_data = load_spice_data(f"instrampl_tran_{key}.txt")
     
     if len(tran_data) > 0:
@@ -708,26 +714,68 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
         v_pp_out = np.max(vout_extracted) - np.min(vout_extracted)
         actual_gain = v_pp_out / v_pp_in
         
+        # Plot waveforms (AC-coupled for clarity, removing transient DC drift)
+        vout_dc_offset = np.mean(vout_extracted)
+        vout_ac = vout_extracted - vout_dc_offset
+        
+        # --- RIGOROUS FFT & THD ANALYSIS ---
+        # Uniform interpolation to avoid uneven time-step issues (SPICE uses variable time steps)
+        n_samples = 2048
+        t_uniform = np.linspace(t_extracted[0], t_extracted[-1], n_samples)
+        # Convert t_extracted (in ns) to seconds for interpolation
+        vout_uniform = np.interp(t_uniform, t_extracted, vout_ac)
+        
+        # Compute FFT
+        dt = (t_uniform[1] - t_uniform[0]) * 1e-9  # time step in seconds
+        yf = np.fft.fft(vout_uniform)
+        xf = np.fft.fftfreq(n_samples, dt)
+        
+        # Keep positive frequencies
+        pos_mask_fft = xf >= 0
+        freqs_pos = xf[pos_mask_fft]
+        mags_pos = 2.0 / n_samples * np.abs(yf[pos_mask_fft]) # Peak amplitude
+        
+        # Locate fundamental peak
+        idx_fund = np.argmin(np.abs(freqs_pos - f_val))
+        window = 1
+        start_w = max(0, idx_fund - window)
+        end_w = min(len(freqs_pos), idx_fund + window + 1)
+        fund_peak_idx = start_w + np.argmax(mags_pos[start_w:end_w])
+        
+        fund_amp = mags_pos[fund_peak_idx]
+        fund_freq = freqs_pos[fund_peak_idx]
+        
+        # Locate harmonics (2nd to 5th order)
+        harm_amps = []
+        harm_freqs = []
+        for h_order in [2, 3, 4, 5]:
+            target_h_freq = h_order * fund_freq
+            idx_h = np.argmin(np.abs(freqs_pos - target_h_freq))
+            start_h = max(0, idx_h - window)
+            end_h = min(len(freqs_pos), idx_h + window + 1)
+            h_peak_idx = start_h + np.argmax(mags_pos[start_h:end_h])
+            harm_amps.append(mags_pos[h_peak_idx])
+            harm_freqs.append(freqs_pos[h_peak_idx])
+            
+        # Compute THD in %
+        thd = np.sqrt(np.sum(np.square(harm_amps))) / fund_amp * 100.0 if fund_amp > 0 else 0.0
+        
         # Calculate phase shift in degrees by correlation / zero-crossings
-        # Find first positive zero crossing of input
         z_cross_in = np.where(np.diff(np.sign(vin_extracted)) > 0)[0]
         z_cross_out = np.where(np.diff(np.sign(vout_extracted)) > 0)[0]
         
         phase_shift_deg = 0.0
         if len(z_cross_in) > 0 and len(z_cross_out) > 0:
-            dt = t_extracted[z_cross_out[0]] - t_extracted[z_cross_in[0]]
-            phase_shift_deg = (dt / (period * 1e9)) * 360.0
+            dt_ns = t_extracted[z_cross_out[0]] - t_extracted[z_cross_in[0]]
+            phase_shift_deg = (dt_ns / (period * 1e9)) * 360.0
             if phase_shift_deg > 180.0:
                 phase_shift_deg -= 360.0
             elif phase_shift_deg < -180.0:
                 phase_shift_deg += 360.0
                 
-        print(f"- {label} ({f_val/1e6:.2f} MHz): Peak-to-Peak Input = {v_pp_in*1e6:.2f} uV, Output = {v_pp_out:.3f} V, Actual Gain = {actual_gain:.1f} ({20*np.log10(actual_gain):.2f} dB), Phase Shift = {phase_shift_deg:.1f}°")
+        print(f"- {label} ({f_val/1e6:.2f} MHz): Peak-to-Peak Input = {v_pp_in*1e6:.2f} uV, Output = {v_pp_out:.3f} V, Actual Gain = {actual_gain:.1f} ({20*np.log10(actual_gain):.2f} dB), Phase Shift = {phase_shift_deg:.1f}°, THD = {thd:.4f}%")
         
-        # Plot waveforms (AC-coupled for clarity, removing transient DC drift)
-        vout_dc_offset = np.mean(vout_extracted)
-        vout_ac = vout_extracted - vout_dc_offset
-        
+        # --- TIME DOMAIN PLOT ---
         ax.plot(t_extracted, vout_ac, color=c_primary, linewidth=2.5, label='AC Output $V_{out}$ (Right Axis)')
         ax_in = ax.twinx()
         ax_in.plot(t_extracted, vin_extracted * 1e6, color='#10b981', linewidth=1.5, linestyle=':', label='Input $V_{in}$ (Left Axis)')
@@ -739,7 +787,7 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
         ax.grid(True, color=c_grid)
         
         # Display characteristics
-        stats_text = f"Gain: {actual_gain:.0f} ({20*np.log10(actual_gain):.1f} dB)\nPhase: {phase_shift_deg:.1f}°\nDC Shift: {vout_dc_offset:.1f}V"
+        stats_text = f"Gain: {actual_gain:.0f} ({20*np.log10(actual_gain):.1f} dB)\nPhase: {phase_shift_deg:.1f}°\nTHD: {thd:.4f}%\nDC Shift: {vout_dc_offset:.1f}V"
         ax.text(0.05, 0.05, stats_text, transform=ax.transAxes, bbox=dict(boxstyle="round,pad=0.4", fc='white', ec=c_border, alpha=0.9), fontsize=9, family='monospace')
         
         # Combine legends
@@ -748,6 +796,25 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
         if i == 0:
             ax.legend(lines_a, labels_a, loc='upper right', frameon=True, facecolor='white', edgecolor=c_border, fontsize=8)
             
+        # --- FREQUENCY SPECTRUM FFT PLOT ---
+        spec_limit_idx = np.argmin(np.abs(freqs_pos - 6.0 * fund_freq))
+        # Plot continuous spectrum in dBV (or linear mV)
+        ax_spec.plot(freqs_pos[:spec_limit_idx] / fund_freq, mags_pos[:spec_limit_idx] * 1e3, color=c_primary, linewidth=2, label='Continuous Spectrum')
+        # Highlight fundamental and harmonics
+        ax_spec.plot(1.0, fund_amp * 1e3, 'o', color='#10b981', markersize=8, label=f'Fundamental ({fund_amp*1e3:.1f} mV)')
+        for order, amp in zip([2, 3, 4, 5], harm_amps):
+            ax_spec.plot(order, amp * 1e3, 'x', color='red', markersize=8, markeredgewidth=2)
+            
+        ax_spec.set_title(f"FFT Spectrum at {label} ({f_val/1e6:.2f} MHz)", fontsize=11, fontweight='bold', pad=8)
+        ax_spec.set_xlabel("Harmonic Order ($f / f_{fundamental}$)", fontsize=9)
+        ax_spec.set_ylabel("Amplitude Peak (mV)", fontsize=9)
+        ax_spec.grid(True, color=c_grid)
+        ax_spec.set_xlim(0, 6)
+        
+        # Display THD and specs on spectrum
+        spec_text = f"THD: {thd:.4f}%\n$f_0$: {fund_freq/1e6:.3f} MHz\nFund: {fund_amp*1e3:.1f} mV\n2nd Harm: {harm_amps[0]*1e6:.1f} uV\n3rd Harm: {harm_amps[1]*1e6:.1f} uV"
+        ax_spec.text(0.48, 0.62, spec_text, transform=ax_spec.transAxes, bbox=dict(boxstyle="round,pad=0.4", fc='white', ec=c_border, alpha=0.9), fontsize=8, family='monospace')
+        
         # Save to CSV
         tran_df = pd.DataFrame({
             'Time_s': time_sec[extract_mask],
@@ -761,6 +828,7 @@ for i, (key, (f_val, label)) in enumerate(frequencies.items()):
             
     else:
         ax.text(0.5, 0.5, "Simulation failed", ha='center', va='center')
+        ax_spec.text(0.5, 0.5, "Simulation failed", ha='center', va='center')
 
 plt.suptitle("Instrumentation Amplifier - Transient Response at Multiple Frequencies (Last 4 Cycles of 8)", fontsize=16, fontweight='bold', y=0.99)
 fig_tran_png = os.path.join(png_dir, "instrampl_transient_characterization.png")
@@ -768,6 +836,14 @@ fig_tran_svg = os.path.join(svg_dir, "instrampl_transient_characterization.svg")
 plt.savefig(fig_tran_png, dpi=300, bbox_inches='tight')
 plt.savefig(fig_tran_svg, format='svg', bbox_inches='tight')
 plt.close()
+
+# Save FFT spectrum figure
+fig_spec.suptitle("Instrumentation Amplifier - FFT Frequency Spectra & Total Harmonic Distortion (THD)", fontsize=16, fontweight='bold', y=0.99)
+fig_spec_png = os.path.join(png_dir, "instrampl_transient_spectra.png")
+fig_spec_svg = os.path.join(svg_dir, "instrampl_transient_spectra.svg")
+fig_spec.savefig(fig_spec_png, dpi=300, bbox_inches='tight')
+fig_spec.savefig(fig_spec_svg, format='svg', bbox_inches='tight')
+plt.close(fig_spec)
 
 # Save non-transient datasets to CSV
 dc_df = pd.DataFrame({
@@ -804,3 +880,4 @@ print(f"- AC Bode plots: {fig_ac_png} / {fig_ac_svg}")
 print(f"- CMRR plots: {fig_cmrr_png} / {fig_cmrr_svg}")
 print(f"- Output Impedance plots: {fig_zout_png} / {fig_zout_svg}")
 print(f"- Transient Grid plots: {fig_tran_png} / {fig_tran_svg}")
+print(f"- Transient Spectra plots: {fig_spec_png} / {fig_spec_svg}")

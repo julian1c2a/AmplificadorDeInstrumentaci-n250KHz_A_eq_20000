@@ -20,12 +20,12 @@ os.makedirs(png_dir, exist_ok=True)
 os.makedirs(svg_dir, exist_ok=True)
 
 def run_simulation():
-    cir_path = os.path.join(workspace_dir, "InstrAmpl.cir")
+    cir_path = os.path.join(workspace_dir, "testbenches", "InstrAmpl.cir")
     print(f"Running ngspice simulation on: {cir_path}...")
     
     # Run ngspice in batch mode
     result = subprocess.run(
-        [ngspice_path, "-b", "InstrAmpl.cir"],
+        [ngspice_path, "-b", os.path.join("testbenches", "InstrAmpl.cir")],
         cwd=workspace_dir,
         capture_output=True,
         text=True
@@ -200,7 +200,7 @@ def analyze_and_plot():
         ax_tran_in = ax_tran.twinx()
         ax_tran_in.plot(time_ms, vin_tran * 1e6, color='#10b981', linewidth=1.5, linestyle=':', label='Input voltage $V_{in}$ (Left Axis)')
         
-        ax_tran.set_title("Transient Response to 10kHz 100μV Peak Balanced Differential Input (50 Ohm Load)", fontsize=13, fontweight='bold', pad=12)
+        ax_tran.set_title("Transient Response to 100kHz 100μV Peak Balanced Differential Input (10K Ohm Load)", fontsize=13, fontweight='bold', pad=12)
         ax_tran.set_xlabel("Time (ms)", fontsize=11, labelpad=8)
         ax_tran.set_ylabel("Output Voltage (V)", fontsize=11, color=c_primary, labelpad=8)
         ax_tran_in.set_ylabel("Input Voltage (μV)", fontsize=11, color='#10b981', labelpad=8)

@@ -6,10 +6,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 ngspice_path = r"C:\msys64\ucrt64\bin\ngspice.exe"
-workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentacion250KHz_A_eq_20000"
+workspace_dir = r"c:\msys64\home\julia\ngspice\AmplificadorDeInstrumentación250KHz_A_eq_20000"
+
+# Define the results directories
+results_dir = os.path.join(workspace_dir, "results")
+txt_dir = os.path.join(results_dir, "data", "txt")
+csv_dir = os.path.join(results_dir, "data", "csv")
+png_dir = os.path.join(results_dir, "img", "png")
+svg_dir = os.path.join(results_dir, "img", "svg")
+
+os.makedirs(txt_dir, exist_ok=True)
+os.makedirs(csv_dir, exist_ok=True)
+os.makedirs(png_dir, exist_ok=True)
+os.makedirs(svg_dir, exist_ok=True)
 
 def load_base_netlist_body():
-    base_file = os.path.join(workspace_dir, "ina_250khz_real.cir")
+    base_file = os.path.join(workspace_dir, "testbenches", "ina_250khz_real.cir")
     with open(base_file, 'r', encoding='utf-8') as f:
         content = f.read()
     
@@ -116,7 +128,7 @@ def run_ngspice(netlist_content, temp_filename):
 
 def load_data(filename):
     data = []
-    path = os.path.join(workspace_dir, filename)
+    path = os.path.join(txt_dir, filename)
     if not os.path.exists(path):
         return np.array([])
     with open(path, 'r') as f:
@@ -127,8 +139,6 @@ def load_data(filename):
                     data.append([float(parts[0]), float(parts[1])])
                 except ValueError:
                     pass
-    if os.path.exists(path):
-        os.remove(path)
     return np.array(data)
 
 # --- EXECUTION STAGE ---
@@ -153,13 +163,13 @@ for case, model_def, xu1, xu2 in cases:
 .control
   ac dec 100 10 10Meg
   let gain_db = vdb(vout_final)
-  wrdata ac_{case}_mag.txt gain_db
+  wrdata results/data/txt/ac_{case}_mag.txt gain_db
   let phase_rad = ph(v(vout_final))
   let phase_deg = phase_rad * 180 / 3.141592653589793
-  wrdata ac_{case}_phase.txt phase_deg
+  wrdata results/data/txt/ac_{case}_phase.txt phase_deg
 
   dc Vdiff -0.4m 0.4m 5u
-  wrdata dc_{case}.txt v(vout_final)
+  wrdata results/data/txt/dc_{case}.txt v(vout_final)
 .endc
 .end
 """
@@ -182,7 +192,7 @@ for case, model_def, xu1, xu2 in cases:
         tran_control = f"""
 .control
   tran {t_step:.3e} {t_stop:.3e}
-  wrdata tran_{case}_{f}khz.txt v(vout_final)
+  wrdata results/data/txt/tran_{case}_{f}khz.txt v(vout_final)
 .endc
 .end
 """
@@ -221,7 +231,7 @@ if len(ac_mags["ideal"]) > 0:
         'Gain_ADA4817_dB': mags_interp['ada4817'],
         'Phase_ADA4817_deg': phs_interp['ada4817']
     })
-    ac_csv_path = os.path.join(workspace_dir, "ac_comparison.csv")
+    ac_csv_path = os.path.join(csv_dir, "ac_comparison.csv")
     ac_df.to_csv(ac_csv_path, index=False)
     print(f"Saved 5-way AC magnitude & phase comparison to: {ac_csv_path}")
 
@@ -245,7 +255,7 @@ if len(dc_data["ideal"]) > 0:
         'Vout_OPA828_V': dc_interp['opa828'],
         'Vout_ADA4817_V': dc_interp['ada4817']
     })
-    dc_csv_path = os.path.join(workspace_dir, "dc_comparison.csv")
+    dc_csv_path = os.path.join(csv_dir, "dc_comparison.csv")
     dc_df.to_csv(dc_csv_path, index=False)
     print(f"Saved 5-way DC sweep comparison to: {dc_csv_path}")
 
@@ -271,7 +281,7 @@ for f in frequencies:
             'Vout_OPA828_V': tran_interp['opa828'],
             'Vout_ADA4817_V': tran_interp['ada4817']
         })
-        tran_csv_path = os.path.join(workspace_dir, f"tran_comparison_{f}khz.csv")
+        tran_csv_path = os.path.join(csv_dir, f"tran_comparison_{f}khz.csv")
         tran_df.to_csv(tran_csv_path, index=False)
         print(f"Saved 5-way Transient comparison ({f} kHz) to: {tran_csv_path}")
 
@@ -315,8 +325,8 @@ ax2.set_ylim(-270, 45)
 ax2.set_xlim(10, 10e6)
 
 plt.tight_layout()
-ac_png = os.path.join(workspace_dir, "ac_comparison.png")
-ac_svg = os.path.join(workspace_dir, "ac_comparison.svg")
+ac_png = os.path.join(png_dir, "ac_comparison.png")
+ac_svg = os.path.join(svg_dir, "ac_comparison.svg")
 plt.savefig(ac_png, dpi=300, bbox_inches='tight')
 plt.savefig(ac_svg, format='svg', bbox_inches='tight')
 plt.close()
@@ -336,8 +346,8 @@ plt.legend(loc='upper left', fontsize=11)
 plt.xlim(-0.5, 0.5)
 plt.ylim(-16, 16)
 
-dc_png = os.path.join(workspace_dir, "dc_comparison.png")
-dc_svg = os.path.join(workspace_dir, "dc_comparison.svg")
+dc_png = os.path.join(png_dir, "dc_comparison.png")
+dc_svg = os.path.join(svg_dir, "dc_comparison.svg")
 plt.savefig(dc_png, dpi=300, bbox_inches='tight')
 plt.savefig(dc_svg, format='svg', bbox_inches='tight')
 plt.close()
@@ -345,7 +355,7 @@ print("Saved 5-way DC Linearity plots.")
 
 # 3. Multi-frequency Transient response plots (SVG & PNG for each frequency)
 for f in frequencies:
-    tran_csv_path = os.path.join(workspace_dir, f"tran_comparison_{f}khz.csv")
+    tran_csv_path = os.path.join(csv_dir, f"tran_comparison_{f}khz.csv")
     if os.path.exists(tran_csv_path):
         df = pd.read_csv(tran_csv_path)
         t_us = df['Time_s'].values * 1e6
@@ -362,8 +372,8 @@ for f in frequencies:
         plt.grid(True, ls="-", color='#e0e0e0')
         plt.legend(loc='upper right', fontsize=11)
         
-        tran_png = os.path.join(workspace_dir, f"tran_comparison_{f}khz.png")
-        tran_svg = os.path.join(workspace_dir, f"tran_comparison_{f}khz.svg")
+        tran_png = os.path.join(png_dir, f"tran_comparison_{f}khz.png")
+        tran_svg = os.path.join(svg_dir, f"tran_comparison_{f}khz.svg")
         plt.savefig(tran_png, dpi=300, bbox_inches='tight')
         plt.savefig(tran_svg, format='svg', bbox_inches='tight')
         plt.close()

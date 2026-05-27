@@ -36,6 +36,9 @@ result = subprocess.run(
     text=True
 )
 
+print("--- STDOUT ---")
 print(result.stdout)
+print("--- STDERR ---")
+print(result.stderr)
 if os.path.exists(test_cir):
     os.remove(test_cir)
